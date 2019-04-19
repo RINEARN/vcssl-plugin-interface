@@ -285,7 +285,7 @@ public class FieldXvci1Adapter implements ExternalVariableConnector1 {
 	 * XVCIに定義されたスクリプト実行毎の初期化処理ですが、
 	 * このアダプタでは不要なため何も行いません。
 	 */
-	public void initializeForScript() {
+	public void initializeForExecution() {
 	}
 
 
@@ -293,7 +293,7 @@ public class FieldXvci1Adapter implements ExternalVariableConnector1 {
 	 * XVCIに定義されたスクリプト実行毎の終了時処理ですが、
 	 * このアダプタでは不要なため何も行いません。
 	 */
-	public void finalizeForScript() {
+	public void finalizeForTermination() {
 	}
 
 
