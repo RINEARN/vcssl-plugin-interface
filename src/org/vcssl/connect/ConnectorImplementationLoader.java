@@ -143,7 +143,8 @@ public class ConnectorImplementationLoader {
 			case "XFCI1" : {
 				if ( !(implementation instanceof ExternalFunctionConnector1) ) {
 					throw new ConnectorImplementationException(
-						"Invalid implementation (should implement org.vcssl.connect.ExternalFunctionConnector1): "
+						"Invalid implementation"
+						+ " (should implement org.vcssl.connect.ExternalFunctionConnector1): "
 						+ connectorImplementationName
 					);
 				}
@@ -153,7 +154,8 @@ public class ConnectorImplementationLoader {
 			case "XVCI1" : {
 				if ( !(implementation instanceof ExternalFunctionConnector1) ) {
 					throw new ConnectorImplementationException(
-						"Invalid implementation (should implement org.vcssl.connect.ExternalVariableConnector1): "
+						"Invalid implementation"
+						+ " (should implement org.vcssl.connect.ExternalVariableConnector1): "
 						+ connectorImplementationName
 					);
 				}
@@ -163,7 +165,8 @@ public class ConnectorImplementationLoader {
 			case "GPCI1" : {
 				if ( !(implementation instanceof GeneralProcessConnector1) ) {
 					throw new ConnectorImplementationException(
-						"Invalid implementation (should implement org.vcssl.connect.GeneralProcessConnector1): "
+						"Invalid implementation"
+						+ " (should implement org.vcssl.connect.GeneralProcessConnector1): "
 						+ connectorImplementationName
 					);
 				}
@@ -173,7 +176,8 @@ public class ConnectorImplementationLoader {
 			case "GPCI2" : {
 				if ( !(implementation instanceof GeneralProcessConnector1) ) {
 					throw new ConnectorImplementationException(
-						"Invalid implementation (should implement org.vcssl.connect.GeneralProcessConnector1): "
+						"Invalid implementation"
+						+ " (should implement org.vcssl.connect.GeneralProcessConnector1): "
 						+ connectorImplementationName
 					);
 				}
@@ -183,7 +187,8 @@ public class ConnectorImplementationLoader {
 			case "GPCI3" : {
 				if ( !(implementation instanceof ExternalFunctionConnector1) ) {
 					throw new ConnectorImplementationException(
-						"Invalid implementation (should implement org.vcssl.connect.GeneralProcessConnector3): "
+						"Invalid implementation"
+						+ " (should implement org.vcssl.connect.GeneralProcessConnector3): "
 						+ connectorImplementationName
 					);
 				}
