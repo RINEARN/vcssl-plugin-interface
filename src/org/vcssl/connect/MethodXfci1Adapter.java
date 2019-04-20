@@ -298,7 +298,7 @@ public class MethodXfci1Adapter implements ExternalFunctionConnector1 {
 	 * XVCIに定義されたスクリプト実行毎の初期化処理ですが、
 	 * このアダプタでは不要なため何も行いません。
 	 */
-	public void initializeForScript() {
+	public void initializeForExecution() {
 	}
 
 
@@ -306,7 +306,7 @@ public class MethodXfci1Adapter implements ExternalFunctionConnector1 {
 	 * XVCIに定義されたスクリプト実行毎の終了時処理ですが、
 	 * このアダプタでは不要なため何も行いません。
 	 */
-	public void finalizeForScript() {
+	public void finalizeForTermination() {
 	}
 
 

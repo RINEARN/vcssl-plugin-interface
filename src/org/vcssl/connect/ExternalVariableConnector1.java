@@ -4,7 +4,7 @@
  * ( for VCSSL / Vnano Plug-in Development )
  * --------------------------------------------------
  * This file is released under CC0.
- * Written in 2017-2018 by RINEARN (Fumihiro Matsui)
+ * Written in 2017-2019 by RINEARN (Fumihiro Matsui)
  * ==================================================
  */
 
@@ -231,18 +231,6 @@ public interface ExternalVariableConnector1 {
 
 
 	/**
-	 * スクリプト実行毎の初期化処理を行います。
-	 */
-	public abstract void initializeForScript();
-
-
-	/**
-	 * スクリプト実行毎の終了時処理を行います。
-	 */
-	public abstract void finalizeForScript();
-
-
-	/**
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 */
 	public abstract void initializeForConnection();
@@ -252,4 +240,16 @@ public interface ExternalVariableConnector1 {
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 */
 	public abstract void finalizeForDisconnection();
+
+
+	/**
+	 * スクリプト実行毎の初期化処理を行います。
+	 */
+	public abstract void initializeForExecution();
+
+
+	/**
+	 * スクリプト実行毎の終了時処理を行います。
+	 */
+	public abstract void finalizeForTermination();
 }

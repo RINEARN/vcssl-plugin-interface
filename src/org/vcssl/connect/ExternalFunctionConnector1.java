@@ -4,7 +4,7 @@
  * ( for VCSSL / Vnano Plug-in Development )
  * --------------------------------------------------
  * This file is released under CC0.
- * Written in 2017-2018 by RINEARN (Fumihiro Matsui)
+ * Written in 2017-2019 by RINEARN (Fumihiro Matsui)
  * ==================================================
  */
 
@@ -103,7 +103,7 @@ public interface ExternalFunctionConnector1 {
 	 *
 	 * @return 全仮引数の名称を取得可能かどうか
 	 */
-	public boolean hasParameterNames();
+	public abstract boolean hasParameterNames();
 
 
 	/**
@@ -250,25 +250,25 @@ public interface ExternalFunctionConnector1 {
 
 
 	/**
-	 * (これはホストアプリケーション側の役目では？)処理系への接続時に必要な初期化処理を行います。
+	 * 処理系への接続時に必要な初期化処理を行います。 // 例外が必要？
 	 */
 	public abstract void initializeForConnection();
 
 
 	/**
-	 * (これはホストアプリケーション側の役目では？)処理系からの接続解除時に必要な終了時処理を行います。
+	 * 処理系からの接続解除時に必要な終了時処理を行います。 // 例外が必要？
 	 */
 	public abstract void finalizeForDisconnection();
 
 
 	/**
-	 * スクリプト実行毎の初期化処理を行います。
+	 * スクリプト実行毎の初期化処理を行います。 // 例外が必要？
 	 */
-	public abstract void initializeForScript();
+	public abstract void initializeForExecution();
 
 
 	/**
-	 * (名前をfinalizeにするとまずいので、なんか考える必要がある)スクリプト実行毎の終了時処理を行います。
+	 * スクリプト実行毎の終了時処理を行います。 // 例外が必要？
 	 */
-	public abstract void finalizeForScript();
+	public abstract void finalizeForTermination();
 }
