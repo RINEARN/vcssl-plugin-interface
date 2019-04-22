@@ -29,7 +29,7 @@ package org.vcssl.connect;
  * XVCI 1 では、外部関数プラグイン用のインターフェースである
  * XFCI 1 ({@link ExternalFunctionConnector1 External Function Connector Interface Gen.1})
  * ベースとしています。
- * <br />
+ * <br>
  * XFCI と同様に、XVCI は現時点ではまだVCSSL処理系では対応していませんが、
  * VCSSLのサブセットであるVnano (VCSSL nano) の処理系では、
  * 開発順序の都合で世代が新しいため、既に XVCI (Gen.1) に対応しています。
@@ -41,7 +41,7 @@ package org.vcssl.connect;
  * </p>
  *
  * <ul>
- *   <li>{@link org.vcssl.nano.VnanoEngine VnanoEngine} (パーミッション関連機能には未対応)</li>
+ *   <li>RINEARN Vnano Engine (パーミッション関連機能には未対応)</li>
  * </ul>
  *
  * <p>
@@ -122,12 +122,12 @@ public interface ExternalVariableConnector1 {
 	 * このメソッドは機能しません（呼び出されません）。
 	 *
 	 * このメソッドが返す必要パーミッション配列と、
-	 * {@link ExternalFunctionConnector1#getNesessaryParmissions getUnnesessaryParmissions}
+	 * {@link ExternalFunctionConnector1#getUnnecessaryPermissions getUnnecessaryPermissions}
 	 * メソッドが返す不要パーミッション配列において、重複している要素がある場合は、
 	 * 前者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
 	 * なお、このメソッドの戻り値に、
-	 * {@link ExternalParmission#ALL ExternalParmission.NONE}
+	 * {@link ExternalPermission#NONE ExternalPermission.NONE}
 	 * のみを格納する配列を返す事で、全てのパーミッションが不要となります。
 	 * ただし、そのような事は、
 	 * この関数が一切のシステムリソースやネットワークにアクセスしない場合など、
@@ -135,7 +135,7 @@ public interface ExternalVariableConnector1 {
 	 *
 	 * @return 必要なパーミッションを格納する配列
 	 */
-	public abstract String[] getNecessaryParmissions();
+	public abstract String[] getNecessaryPermissions();
 
 
 	/**
@@ -146,12 +146,12 @@ public interface ExternalVariableConnector1 {
 	 * このメソッドは機能しません（呼び出されません）。
 	 *
 	 * このメソッドが返す不要パーミッション配列と、
-	 * {@link ExternalFunctionConnector1#getNesessaryParmissions getNesessaryParmissions}
+	 * {@link ExternalFunctionConnector1#getNecessaryPermissions getNecessaryPermissions}
 	 * メソッドが返す必要パーミッション配列において、重複している要素がある場合は、
 	 * 後者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
 	 * なお、このメソッドの戻り値に
-	 * {@link ExternalParmission#ALL ExternalParmission.ALL} のみを格納する配列を返す事で、
+	 * {@link ExternalPermission#ALL ExternalPermission.ALL} のみを格納する配列を返す事で、
 	 * 必要パーミッション配列に含まれているものを除いた、全てのパーミッションが不要となります。
 	 * これは、将来的に新しいパーミッションが追加された場合に、
 	 * そのパーミッションによって、この関数の実行が拒否される事を回避する事ができます。
@@ -168,7 +168,7 @@ public interface ExternalVariableConnector1 {
 	 *
 	 * @return 不要なパーミッションを格納する配列
 	 */
-	public abstract String[] getUnnecessaryParmissions();
+	public abstract String[] getUnnecessaryPermissions();
 
 
 	/**
