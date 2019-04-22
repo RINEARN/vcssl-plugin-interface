@@ -69,7 +69,7 @@ public interface ExternalLibraryConnector1 {
 	 *
 	 * @return 必要なパーミッションを格納する配列
 	 */
-	public abstract String[] getNecessaryParmissions();
+	public abstract String[] getNecessaryPermissions();
 
 
 	/**
@@ -93,7 +93,7 @@ public interface ExternalLibraryConnector1 {
 	 *
 	 * @return 不要なパーミッションを格納する配列
 	 */
-	public abstract String[] getUnnecessaryParmissions();
+	public abstract String[] getUnnecessaryPermissions();
 
 
 	/**
