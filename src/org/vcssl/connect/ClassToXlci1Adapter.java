@@ -258,48 +258,54 @@ public class ClassToXlci1Adapter implements ExternalLibraryConnector1 {
 
 
 	/**
-	 * このプラグインが、スクリプトエンジンに接続された際に呼び出され、
-	 * そのエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
-	 * 同オブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	@Override
-	public void setEngine(Object engineConnector) {
-	}
-
-
-	/**
-	 * 処理系への接続時に必要な初期化処理を行います。
-	 */
-	@Override
-	public void initializeForConnection() {
+	public void initializeForConnection(Object engineConnector) {
 	}
 
 
 	/**
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	@Override
-	public void finalizeForDisconnection() {
+	public void finalizeForDisconnection(Object engineConnector) {
 	}
 
 
 	/**
 	 * スクリプト実行毎の初期化処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	@Override
-	public void initializeForExecution() {
+	public void initializeForExecution(Object engineConnector) {
 	}
 
 
 	/**
 	 * スクリプト実行毎の終了時処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	@Override
-	public void finalizeForTermination() {
+	public void finalizeForTermination(Object engineConnector) {
 	}
 
 }

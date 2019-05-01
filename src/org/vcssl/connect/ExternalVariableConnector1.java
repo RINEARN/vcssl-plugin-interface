@@ -172,18 +172,6 @@ public interface ExternalVariableConnector1 {
 
 
 	/**
-	 * このプラグインが、スクリプトエンジンに接続された際に呼び出され、
-	 * そのエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 *
-	 * 同オブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
-	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
-	 *
-	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
-	 */
-	public abstract void setEngine(Object engineConnector);
-
-
-	/**
 	 * 変数のデータを取得します。
 	 *
 	 * このメソッドは、データの自動変換が有効である場合、
@@ -230,26 +218,54 @@ public interface ExternalVariableConnector1 {
 	public abstract void setData(Object data) throws ExternalVariableException;
 
 
+	// 例外が必要？
 	/**
 	 * 処理系への接続時に必要な初期化処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public abstract void initializeForConnection();
+	public abstract void initializeForConnection(Object engineConnector);
 
 
+	// 例外が必要？
 	/**
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public abstract void finalizeForDisconnection();
+	public abstract void finalizeForDisconnection(Object engineConnector);
 
 
+	// 例外が必要？
 	/**
 	 * スクリプト実行毎の初期化処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public abstract void initializeForExecution();
+	public abstract void initializeForExecution(Object engineConnector);
 
 
+	// 例外が必要？
 	/**
 	 * スクリプト実行毎の終了時処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public abstract void finalizeForTermination();
+	public abstract void finalizeForTermination(Object engineConnector);
 }

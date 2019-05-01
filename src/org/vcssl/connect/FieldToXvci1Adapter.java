@@ -207,19 +207,6 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 
 
 	/**
-	 * このプラグインが、スクリプトエンジンに接続された際に呼び出され、
-	 * そのエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 *
-	 * 同オブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
-	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
-	 *
-	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
-	 */
-	public void setEngine(Object engineConnector) {
-	}
-
-
-	/**
 	 * 変数のデータを取得します。
 	 */
 	public Object getData() throws ExternalVariableException {
@@ -280,34 +267,54 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 
 
 	/**
-	 * XVCIに定義されたスクリプト実行毎の初期化処理ですが、
-	 * このアダプタでは不要なため何も行いません。
+	 * 処理系への接続時に必要な初期化処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public void initializeForExecution() {
+	public void initializeForConnection(Object engineConnector) {
 	}
 
 
 	/**
-	 * XVCIに定義されたスクリプト実行毎の終了時処理ですが、
-	 * このアダプタでは不要なため何も行いません。
+	 * 処理系からの接続解除時に必要な終了時処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public void finalizeForTermination() {
+	public void finalizeForDisconnection(Object engineConnector) {
 	}
 
 
 	/**
-	 * XVCIに定義された処理系への接続時の初期化処理ですが、
-	 * このアダプタでは不要なため何も行いません。
+	 * スクリプト実行毎の初期化処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public void initializeForConnection() {
+	public void initializeForExecution(Object engineConnector) {
 	}
 
 
 	/**
-	 * XVCIに定義された処理系からの接続解除時の終了時処理ですが、
-	 * このアダプタでは不要なため何も行いません。
+	 * スクリプト実行毎の終了時処理を行います。
+	 *
+	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
+	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
+	 *
+	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 */
-	public void finalizeForDisconnection() {
+	public void finalizeForTermination(Object engineConnector) {
 	}
 
 }
