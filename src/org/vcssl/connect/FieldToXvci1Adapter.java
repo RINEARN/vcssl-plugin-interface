@@ -209,20 +209,20 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	/**
 	 * 変数のデータを取得します。
 	 */
-	public Object getData() throws ExternalVariableException {
+	public Object getData() throws ConnectorException {
 		try {
 			return this.field.get(this.objectInstance);
 
 		// アクセス修飾子などが原因で取得できない場合
 		} catch (IllegalArgumentException illegalArgumentException) {
-			throw new ExternalVariableException(
+			throw new ConnectorException(
 					objectInstance.getClass().getCanonicalName() + " class has no field named \"" + this.field.getName() + "\"",
 					illegalArgumentException
 			);
 
 		// そもそもインスタンスが対象フィールドを持っていない場合
 		} catch (IllegalAccessException illegalAccessException) {
-			throw new ExternalVariableException(
+			throw new ConnectorException(
 					"The field \"" + this.field.getName() + "\" of " + objectInstance.getClass().getCanonicalName()
 					+ " class is not accessable (probably it is private or protected).",
 					illegalAccessException
@@ -235,7 +235,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * データの自動変換が無効化されている場合において、変数のデータを取得します。
 	 * このアダプタでは、この機能は使用されません。
 	 */
-	public void getData(Object dataContainer) throws ExternalVariableException {
+	public void getData(Object dataContainer) throws ConnectorException {
 	}
 
 
@@ -244,20 +244,20 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 *
 	 * @param data 変数のデータ
 	 */
-	public void setData(Object data) throws ExternalVariableException {
+	public void setData(Object data) throws ConnectorException {
 		try {
 			this.field.set(this.objectInstance, data);
 
 		// アクセス修飾子などが原因で設定できない場合
 		} catch (IllegalArgumentException illegalArgumentException) {
-			throw new ExternalVariableException(
+			throw new ConnectorException(
 					objectInstance.getClass().getCanonicalName() + " class has no field named \"" + this.field.getName() + "\"",
 					illegalArgumentException
 			);
 
 		// そもそもインスタンスが対象フィールドを持っていない場合
 		} catch (IllegalAccessException illegalAccessException) {
-			throw new ExternalVariableException(
+			throw new ConnectorException(
 					"The field \"" + this.field.getName() + "\" of " + objectInstance.getClass().getCanonicalName()
 					+ " class is not accessable (probably it is private or protected).",
 					illegalAccessException
@@ -274,8 +274,9 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public void initializeForConnection(Object engineConnector) {
+	public void initializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
 
@@ -287,8 +288,9 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public void finalizeForDisconnection(Object engineConnector) {
+	public void finalizeForDisconnection(Object engineConnector) throws ConnectorException {
 	}
 
 
@@ -300,8 +302,9 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public void initializeForExecution(Object engineConnector) {
+	public void initializeForExecution(Object engineConnector) throws ConnectorException {
 	}
 
 
@@ -313,8 +316,9 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public void finalizeForTermination(Object engineConnector) {
+	public void finalizeForTermination(Object engineConnector) throws ConnectorException {
 	}
 
 }

@@ -179,10 +179,9 @@ public interface ExternalVariableConnector1 {
 	 * true を返すよう実装されている場合に使用されます。
 	 *
 	 * @return 変数のデータ
-	 * @throws ExternalVariableException
-	 * 		何らかの問題により、データへのアクセスが行えない場合にスローします。
+	 * @throws ConnectorException 何らかの問題により、データへのアクセスが行えない場合にスローします。
 	 */
-	public abstract Object getData() throws ExternalVariableException;
+	public abstract Object getData() throws ConnectorException;
 
 
 	/**
@@ -196,10 +195,9 @@ public interface ExternalVariableConnector1 {
 	 * 引数に渡される処理系依存のデータコンテナオブジェクトに格納してください。
 	 *
 	 * @param dataContainer データを格納する、処理系依存のデータコンテナオブジェクト
-	 * @throws ExternalVariableException
-	 * 		何らかの問題により、データへのアクセスが行えない場合にスローします。
+	 * @throws ConnectorException 何らかの問題により、データへのアクセスが行えない場合にスローします。
 	 */
-	public abstract void getData(Object dataContainer) throws ExternalVariableException;
+	public abstract void getData(Object dataContainer) throws ConnectorException;
 
 
 	/**
@@ -212,13 +210,11 @@ public interface ExternalVariableConnector1 {
 	 * データの自動変換が無効である場合には、引数には処理系依存のデータコンテナオブジェクトが渡されます。
 	 *
 	 * @param data 変数のデータ
-	 * @throws ExternalVariableException
-	 * 		何らかの問題により、データへのアクセスが行えない場合にスローします。
+	 * @throws ConnectorException 何らかの問題により、データへのアクセスが行えない場合にスローします。
 	 */
-	public abstract void setData(Object data) throws ExternalVariableException;
+	public abstract void setData(Object data) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
@@ -227,11 +223,11 @@ public interface ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public abstract void initializeForConnection(Object engineConnector);
+	public abstract void initializeForConnection(Object engineConnector) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 *
@@ -240,11 +236,11 @@ public interface ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public abstract void finalizeForDisconnection(Object engineConnector);
+	public abstract void finalizeForDisconnection(Object engineConnector) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * スクリプト実行毎の初期化処理を行います。
 	 *
@@ -253,11 +249,11 @@ public interface ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public abstract void initializeForExecution(Object engineConnector);
+	public abstract void initializeForExecution(Object engineConnector) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * スクリプト実行毎の終了時処理を行います。
 	 *
@@ -266,6 +262,8 @@ public interface ExternalVariableConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public abstract void finalizeForTermination(Object engineConnector);
+	public abstract void finalizeForTermination(Object engineConnector) throws ConnectorException;
+
 }

@@ -254,13 +254,13 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * @param arguments 全ての実引数を格納する配列
 	 */
 	@Override
-	public Object invoke(Object[] arguments) throws ExternalFunctionException {
+	public Object invoke(Object[] arguments) throws ConnectorException {
 		try {
 			return this.method.invoke(objectInstance, arguments);
 
 		// アクセス修飾子などが原因で呼び出せない場合
 		} catch (IllegalArgumentException illegalArgumentException) {
-			throw new ExternalFunctionException(
+			throw new ConnectorException(
 					objectInstance.getClass().getCanonicalName() + " class has no method named \"" + this.method.getName()
 					+ "\" with expected parameters.",
 					illegalArgumentException
@@ -268,7 +268,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 
 		// そもそもインスタンスが対象メソッドを持っていない場合
 		} catch (IllegalAccessException illegalAccessException) {
-			throw new ExternalFunctionException(
+			throw new ConnectorException(
 					"The method \"" + this.method.getName() + "\" of " + objectInstance.getClass().getCanonicalName()
 					+ " class is not accessable (probably it is private or protected).",
 					illegalAccessException
@@ -276,7 +276,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 
 		// 呼び出し対象のメソッドが、実行中に内部から例外をスローしてきた場合
 		} catch (InvocationTargetException invocationTargetException) {
-			throw new ExternalFunctionException(invocationTargetException);
+			throw new ConnectorException(invocationTargetException);
 		}
 	}
 
@@ -289,8 +289,9 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public void initializeForConnection(Object engineConnector) {
+	public void initializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
 
@@ -302,8 +303,9 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public void finalizeForDisconnection(Object engineConnector) {
+	public void finalizeForDisconnection(Object engineConnector) throws ConnectorException {
 	}
 
 
@@ -315,8 +317,9 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public void initializeForExecution(Object engineConnector) {
+	public void initializeForExecution(Object engineConnector) throws ConnectorException {
 	}
 
 
@@ -328,7 +331,9 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public void finalizeForTermination(Object engineConnector) {
+	public void finalizeForTermination(Object engineConnector) throws ConnectorException {
 	}
+
 }

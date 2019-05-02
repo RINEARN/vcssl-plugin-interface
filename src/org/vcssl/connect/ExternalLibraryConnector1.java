@@ -112,7 +112,6 @@ public interface ExternalLibraryConnector1 {
 	public abstract ExternalVariableConnector1[] getVariables();
 
 
-	// 例外が必要？
 	/**
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
@@ -121,11 +120,11 @@ public interface ExternalLibraryConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public abstract void initializeForConnection(Object engineConnector);
+	public abstract void initializeForConnection(Object engineConnector) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 *
@@ -134,11 +133,11 @@ public interface ExternalLibraryConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public abstract void finalizeForDisconnection(Object engineConnector);
+	public abstract void finalizeForDisconnection(Object engineConnector) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * スクリプト実行毎の初期化処理を行います。
 	 *
@@ -147,11 +146,11 @@ public interface ExternalLibraryConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
-	public abstract void initializeForExecution(Object engineConnector);
+	public abstract void initializeForExecution(Object engineConnector) throws ConnectorException;
 
 
-	// 例外が必要？
 	/**
 	 * スクリプト実行毎の終了時処理を行います。
 	 *
@@ -160,6 +159,8 @@ public interface ExternalLibraryConnector1 {
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
+	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
-	public abstract void finalizeForTermination(Object engineConnector);
+	public abstract void finalizeForTermination(Object engineConnector) throws ConnectorException;
+
 }
