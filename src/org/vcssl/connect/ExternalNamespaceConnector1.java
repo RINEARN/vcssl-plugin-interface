@@ -1,6 +1,6 @@
 /*
  * ==================================================
- * External Library Connector Interface 1 (XLCI 1)
+ * External Namespace Connector Interface 1 (XLCI 1)
  * ( for VCSSL / Vnano Plug-in Development )
  * --------------------------------------------------
  * This file is released under CC0.
@@ -12,11 +12,10 @@ package org.vcssl.connect;
 
 /**
  * <p>
- * 複数の外部関数や外部変数を1つにまとめた、
  * XNCI 1 (External Namespace Connector Interface 1) 形式のプラグインを開発するための、
  * プラグイン側のコネクター・インターフェースです。
  * </p>
- *
+ * 
  * <p>
  * <span style="font-weight: bold;">
  * ※ このインターフェースは未確定であり、
@@ -24,10 +23,20 @@ package org.vcssl.connect;
  * 一部仕様が変更される可能性があります。
  * </span>
  * </p>
- *
+ * 
  * <p>
- * XNCI は、複数の関数や変数を、共通の名前空間に属する集合として、
- * 1つのプラグインにまとめるためのプラグインインターフェースです。
+ * XNCIは、関数や変数の集合を、共通の名前空間に属する形で1つにまとめ、
+ * いわゆるモジュラープログラミングにおけるモジュールを構成するために用います。
+ * つまり、このインターフェースの抽象化対象は「固有の名前空間を持つモジュール」です。
+ * ただし、「モジュール」という語が指す概念や粒度の大きさは、プログラミング言語や文脈によって大きく異なるため、
+ * 混乱を避ける目的で、このインターフェースの名称はModuleという語を含まないように命名されました。
+ * 代わりに、集合の単位を区切るという機能面を重視して、Namespaceの語が採用されました。
+ * （ ただし、概念上は必ずしもモジュールと名前空間の単位は一致する必要は無いため、
+ * 将来的には、このインターフェースの子要素または親要素として、
+ * さらにモジュール相当のインターフェースが新設される可能性もあり得ます。 ）
+ * </p>
+ * 
+ * <p>
  * XNCI 1 では、関数に {@link ExternalFunctionConnector1 XFCI 1} 形式、
  * 変数に {@link ExternalVariableConnector1 XVCI 1} 形式のインターフェースを採用しています。
  * それらの形式で実装された関数/変数プラグインの集合（配列）を、この名前空間に属するものとして保持し、
@@ -35,7 +44,7 @@ package org.vcssl.connect;
  * {@link ExternalNamespaceConnector1#getVariables() getVariables()} メソッドの戻り値として、
  * 処理系に提供します。
  * </p>
- *
+ * 
  * @author RINEARN (Fumihiro Matsui)
  */
 public interface ExternalNamespaceConnector1 {
