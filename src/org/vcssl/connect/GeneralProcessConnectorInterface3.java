@@ -28,16 +28,16 @@ package org.vcssl.connect;
  * <p>
  * GPCI 3 は GPCI 2 以前の仕様の完全な拡張（以前の使用を全て含む形）ではありませんが、
  * 両者の仕様は競合しないため、必要に応じて
- * {@link GeneralProcessConnector2 GeneralProcessConnector2}
+ * {@link GeneralProcessConnectorInterface2 GeneralProcessConnectorInterface2}
  * および
- * {@link GeneralProcessConnector1 GeneralProcessConnector1}
+ * {@link GeneralProcessConnectorInterface1 GeneralProcessConnectorInterface1}
  * インターフェースも同時に実装することで、GPCI 2までしか対応していない処理系にも対応する事が可能です。
  * <br>
  * その際、GPCI 2の
- * {@link GeneralProcessConnector2#init init}/{@link GeneralProcessConnector2#dispose dispose}
+ * {@link GeneralProcessConnectorInterface2#init init}/{@link GeneralProcessConnectorInterface2#dispose dispose}
  * メソッドと、このGPCI 3の
- * {@link GeneralProcessConnector3#initializeForExecution initializeForExecution}/
- * {@link GeneralProcessConnector3#finalizeForTermination finalizeForTermination}
+ * {@link GeneralProcessConnectorInterface3#initializeForExecution initializeForExecution}/
+ * {@link GeneralProcessConnectorInterface3#finalizeForTermination finalizeForTermination}
  * メソッドは、役割がほぼ同じである事に留意してください。
  * <br>
  * 処理系は、プラグインに複数のインターフェースが実装されている場合、
@@ -74,7 +74,7 @@ package org.vcssl.connect;
  * </p>
  *
  * <p>
- * GPCI 3 は、{@link GeneralProcessConnector2 GPCI 2} をベースに、
+ * GPCI 3 は、{@link GeneralProcessConnectorInterface2 GPCI 2} をベースに、
  * パーミッション設定ベースのセキュリティレイヤーを持つ処理系のため、
  * 必要・不要パーミッションの通知機能がサポートされています。
  * また、初期化/終了時処理も拡張されています。
@@ -101,7 +101,7 @@ package org.vcssl.connect;
  *
  * @author RINEARN (Fumihiro Matsui)
  */
-public interface GeneralProcessConnector3 {
+public interface GeneralProcessConnectorInterface3 {
 
 
 	/** 動的ロード時などに処理系側から参照される、インターフェースの形式名（値は"GPCI"）です。 */
@@ -116,7 +116,7 @@ public interface GeneralProcessConnector3 {
 	 *
 	 * このメソッドは、処理系側から、スクリプト実行前の段階で呼び出されます。
 	 * そこで渡された関数名に対して true を返すと、スクリプト実行時に該当関数の処理が、
-	 * このプラグインの {@link GeneralProcessConnector3#process process}
+	 * このプラグインの {@link GeneralProcessConnectorInterface3#process process}
 	 * メソッドで実行するように紐づけられます。
 	 *
 	 * 関数の引数情報は渡されず、
@@ -156,7 +156,7 @@ public interface GeneralProcessConnector3 {
 	 * このメソッドは機能しません（呼び出されません）。
 	 *
 	 * このメソッドが返す必要パーミッション配列と、
-	 * {@link GeneralProcessConnector3#getUnnecessaryPermissions getUnnecessaryPermissions}
+	 * {@link GeneralProcessConnectorInterface3#getUnnecessaryPermissions getUnnecessaryPermissions}
 	 * メソッドが返す不要パーミッション配列において、重複している要素がある場合は、
 	 * 前者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
@@ -181,7 +181,7 @@ public interface GeneralProcessConnector3 {
 	 * このメソッドは機能しません（呼び出されません）。
 	 *
 	 * このメソッドが返す不要パーミッション配列と、
-	 * {@link GeneralProcessConnector3#getNecessaryPermissions getNecessaryPermissions}
+	 * {@link GeneralProcessConnectorInterface3#getNecessaryPermissions getNecessaryPermissions}
 	 * メソッドが返す必要パーミッション配列において、重複している要素がある場合は、
 	 * 後者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
@@ -211,7 +211,7 @@ public interface GeneralProcessConnector3 {
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -224,7 +224,7 @@ public interface GeneralProcessConnector3 {
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -237,7 +237,7 @@ public interface GeneralProcessConnector3 {
 	 * スクリプト実行毎の初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -250,7 +250,7 @@ public interface GeneralProcessConnector3 {
 	 * スクリプト実行毎の終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト

@@ -16,13 +16,13 @@ import java.util.Arrays;
 
 /**
  * <p>
- * ホスト言語側のフィールドを、{@link org.vcssl.connect.ExternalVariableConnector1 XVCI 1}
+ * ホスト言語側のフィールドを、{@link org.vcssl.connect.ExternalVariableConnectorInterface1 XVCI 1}
  * 形式の外部変数プラグイン仕様に変換し、XVCI 1 対応の言語処理系に接続するためのアダプタです。
  * </p>
  *
  * @author RINEARN (Fumihiro Matsui)
  */
-public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
+public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 {
 
 
 	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermission#NONE ConnectorPermission.NONE} } ）です。 */
@@ -270,7 +270,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -284,7 +284,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -298,7 +298,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * スクリプト実行毎の初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -312,7 +312,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnector1 {
 	 * スクリプト実行毎の終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト

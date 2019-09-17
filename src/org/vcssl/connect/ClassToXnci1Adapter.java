@@ -18,13 +18,13 @@ import java.util.List;
 
 /**
  * <p>
- * ホスト言語側のクラスを、{@link org.vcssl.connect.ExternalNamespaceConnector1 XNCI 1}
+ * ホスト言語側のクラスを、{@link org.vcssl.connect.ExternalNamespaceConnectorInterface1 XNCI 1}
  * 形式の外部変数プラグイン仕様に変換し、XNCI 1 対応の言語処理系に接続するためのアダプタです。
  * </p>
  *
  * @author RINEARN (Fumihiro Matsui)
  */
-public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
+public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1 {
 
 
 	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermission#NONE ConnectorPermission.NONE} } ）です。 */
@@ -119,7 +119,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * {@link ConnectorPermission#NONE ConnectorPermission.NONE}
 	 * のみを格納する配列を返す事で、全てのパーミッションが不要となります。
 	 * 現状では、この名前空間に属する関数・変数のインターフェースである
-	 * {@link ExternalFunctionConnector1 XFCI1}/{@link ExternalFunctionConnector1 XVCI1}
+	 * {@link ExternalFunctionConnectorInterface1 XFCI1}/{@link ExternalFunctionConnectorInterface1 XVCI1}
 	 * の階層でもパーミッション指定機能を持っているため、このメソッドは冗長であり、
 	 * 上記のように実装する以外の具体的な使い道は、あまり考えられません。
 	 *
@@ -157,7 +157,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * {@link ConnectorPermission#ALL ConnectorPermission.ALL} のみを格納する配列を返す事で、
 	 * 必要パーミッション配列に含まれているものを除いた、全てのパーミッションが不要となります。
 	 * 現状では、この名前空間に属する関数・変数のインターフェースである
-	 * {@link ExternalFunctionConnector1 XFCI1}/{@link ExternalFunctionConnector1 XVCI1}
+	 * {@link ExternalFunctionConnectorInterface1 XFCI1}/{@link ExternalFunctionConnectorInterface1 XVCI1}
 	 * の階層でもパーミッション指定機能を持っているため、このメソッドは冗長であり、
 	 * 上記のように実装する以外の具体的な使い道は、あまり考えられません。
 	 *
@@ -179,13 +179,13 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * @return この名前空間に属する関数をまとめた配列
 	 */
 	@Override
-	public ExternalFunctionConnector1[] getFunctions() {
+	public ExternalFunctionConnectorInterface1[] getFunctions() {
 
 		// 変換対象クラスに属する全てのメソッドを取得
 		Method[] methods = this.pluginClass.getDeclaredMethods();
 
 		// XFCI1形式に変換したアダプタを格納するリスト
-		List<ExternalFunctionConnector1> xfciList = new LinkedList<ExternalFunctionConnector1>();
+		List<ExternalFunctionConnectorInterface1> xfciList = new LinkedList<ExternalFunctionConnectorInterface1>();
 
 		// メソッドを1つずつXFCI1形式に変換してリストに追加していく
 		for (Method method: methods) {
@@ -211,7 +211,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 		}
 
 		// リスト内容を配列にまとめて返す
-		return xfciList.toArray(new ExternalFunctionConnector1[0]);
+		return xfciList.toArray(new ExternalFunctionConnectorInterface1[0]);
 	}
 
 
@@ -221,13 +221,13 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * @return この名前空間に属する変数をまとめた配列
 	 */
 	@Override
-	public ExternalVariableConnector1[] getVariables() {
+	public ExternalVariableConnectorInterface1[] getVariables() {
 
 		// 変換対象クラスに属する全てのフィールドを取得
 		Field[] fields = this.pluginClass.getDeclaredFields();
 
 		// XVCI1形式に変換したアダプタを格納するリスト
-		List<ExternalVariableConnector1> xvciList = new LinkedList<ExternalVariableConnector1>();
+		List<ExternalVariableConnectorInterface1> xvciList = new LinkedList<ExternalVariableConnectorInterface1>();
 
 		// フィールドを1つずつXVCI1形式に変換してリストに追加していく
 		for (Field field: fields) {
@@ -253,7 +253,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 		}
 
 		// リスト内容を配列にまとめて返す
-		return xvciList.toArray(new ExternalVariableConnector1[0]);
+		return xvciList.toArray(new ExternalVariableConnectorInterface1[0]);
 	}
 
 
@@ -261,7 +261,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -275,7 +275,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -289,7 +289,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * スクリプト実行毎の初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -303,7 +303,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnector1 {
 	 * スクリプト実行毎の終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト

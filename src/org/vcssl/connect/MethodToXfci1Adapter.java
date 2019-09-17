@@ -16,13 +16,13 @@ import java.util.Arrays;
 
 /**
  * <p>
- * ホスト言語側のメソッドを、{@link org.vcssl.connect.ExternalFunctionConnector1 XFCI 1}
+ * ホスト言語側のメソッドを、{@link org.vcssl.connect.ExternalFunctionConnectorInterface1 XFCI 1}
  * 形式の外部変数プラグイン仕様に変換し、XFCI 1 対応の言語処理系に接続するためのアダプタです。
  * </p>
  *
  * @author RINEARN (Fumihiro Matsui)
  */
-public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
+public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1 {
 
 
 	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermission#NONE ConnectorPermission.NONE} } ）です。 */
@@ -97,7 +97,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 
 	/**
 	 * 全ての仮引数の名称情報を保持しており、
-	 * {@link ExternalFunctionConnector1 getParameterNames}
+	 * {@link ExternalFunctionConnectorInterface1 getParameterNames}
 	 * メソッドによって取得可能であるかどうかを返しますが、
 	 * このアダプタは常に false を返します。
 	 *
@@ -286,7 +286,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * 処理系への接続時に必要な初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -300,7 +300,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * 処理系からの接続解除時に必要な終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -314,7 +314,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * スクリプト実行毎の初期化処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
@@ -328,7 +328,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnector1 {
 	 * スクリプト実行毎の終了時処理を行います。
 	 *
 	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnector1 EngineConnector1}
+	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
 	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
 	 *
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
