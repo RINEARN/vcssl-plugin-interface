@@ -25,11 +25,11 @@ import java.util.Arrays;
 public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1 {
 
 
-	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermission#NONE ConnectorPermission.NONE} } ）です。 */
-	private static final String[] DEFAULT_NECESSARY_PERMISSIONS = { ConnectorPermission.NONE };
+	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE} } ）です。 */
+	private static final String[] DEFAULT_NECESSARY_PERMISSIONS = { ConnectorPermissionName.NONE };
 
-	/** デフォルトの不要パーミッション配列（値は { {@link ConnectorPermission#ALL ConnectorPermission.ALL} } ）です。 */
-	private static final String[] DEFAULT_UNNECESSARY_PERMISSIONS = { ConnectorPermission.ALL };
+	/** デフォルトの不要パーミッション配列（値は { {@link ConnectorPermissionName#ALL ConnectorPermissionName.ALL} } ）です。 */
+	private static final String[] DEFAULT_UNNECESSARY_PERMISSIONS = { ConnectorPermissionName.ALL };
 
 
 	/** ホスト言語側のメソッドへの、リフレクションによるアクセスを提供するMethodインスタンスです。 */
@@ -39,10 +39,10 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	private Object objectInstance = null;
 
 	/** 必要パーミッション配列です。 */
-	private String[] necessaryPermissions = null;
+	private String[] necessaryPermissionNames = null;
 
 	/** 不要パーミッション配列です。 */
-	private String[] unnecessaryPermissions = null;
+	private String[] unnecessaryPermissionNames = null;
 
 
 	/**
@@ -56,10 +56,10 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 		this.method = method;
 		this.objectInstance = objectInstance;
 
-		this.necessaryPermissions = Arrays.copyOf(
+		this.necessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_NECESSARY_PERMISSIONS, DEFAULT_NECESSARY_PERMISSIONS.length
 		);
-		this.unnecessaryPermissions = Arrays.copyOf(
+		this.unnecessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_UNNECESSARY_PERMISSIONS, DEFAULT_UNNECESSARY_PERMISSIONS.length
 		);
 	}
@@ -75,10 +75,10 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 		this.method = method;
 		this.objectInstance = null;
 
-		this.necessaryPermissions = Arrays.copyOf(
+		this.necessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_NECESSARY_PERMISSIONS, DEFAULT_NECESSARY_PERMISSIONS.length
 		);
-		this.unnecessaryPermissions = Arrays.copyOf(
+		this.unnecessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_UNNECESSARY_PERMISSIONS, DEFAULT_UNNECESSARY_PERMISSIONS.length
 		);
 	}
@@ -169,7 +169,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 
 
 	/**
-	 * この関数の実行に必要な全てのパーミッションを、配列にまとめて設定します。
+	 * この関数の実行に必要な全てのパーミッションの名称を、配列にまとめて設定します。
 	 *
 	 * このメソッドで設定される必要パーミッション配列と、
 	 * {@link FieldToXvci1Adapter#setUnnecessaryPermissions setUnnesessaryPermissions}
@@ -177,35 +177,35 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * 前者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
 	 * なお、このメソッドの引数に、
-	 * {@link ConnectorPermission#ALL ConnectorPermission.NONE}
+	 * {@link ConnectorPermissionName#ALL ConnectorPermissionName.NONE}
 	 * のみを格納する配列を渡す事で、全てのパーミッションが不要となります。
 	 * ただし、そのような事は、
 	 * この関数が一切のシステムリソースやネットワークにアクセスしない場合など、
 	 * スクリプト内で閉じた処理と同等以上のセキュリティが確保されている場合のみ行ってください。
 	 *
-	 * @param necessaryPermissions 必要なパーミッションを格納する配列
+	 * @param necessaryPermissionNames 必要なパーミッションの名称を格納する配列
 	 */
-	public void setNecessaryPermissions(String[] necessaryPermissions) {
-		this.necessaryPermissions = necessaryPermissions;
+	public void setNecessaryPermissionNames(String[] necessaryPermissionNames) {
+		this.necessaryPermissionNames = necessaryPermissionNames;
 	}
 
 
 	/**
-	 * この関数の実行に必要な全てのパーミッションを、配列にまとめて返します。
+	 * この関数の実行に必要な全てのパーミッションの名称を、配列にまとめて返します。
 	 *
 	 * デフォルトでは、パーミッションが不要である事を意味する
-	 * { {@link ConnectorPermission#NONE ConnectorPermission.NONE}
+	 * { {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE}
 	 * が返されます。
 	 *
-	 * @return 必要なパーミッションを格納する配列
+	 * @return 必要なパーミッションの名称を格納する配列
 	 */
-	public String[] getNecessaryPermissions() {
-		return this.necessaryPermissions;
+	public String[] getNecessaryPermissionNames() {
+		return this.necessaryPermissionNames;
 	}
 
 
 	/**
-	 * この関数の実行に不要な全てのパーミッションを、配列にまとめて設定します。
+	 * この関数の実行に不要な全てのパーミッションの名称を、配列にまとめて設定します。
 	 *
 	 * このメソッドで設定される不要パーミッション配列と、
 	 * {@link FieldToXvci1Adapter#setNecessaryPermissions setNecessaryPermissions}
@@ -213,7 +213,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * 後者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
 	 * なお、このメソッドの引数に
-	 * {@link ConnectorPermission#ALL ConnectorPermission.ALL} のみを格納する配列を返す事で、
+	 * {@link ConnectorPermissionName#ALL ConnectorPermissionName.ALL} のみを格納する配列を返す事で、
 	 * 必要パーミッション配列に含まれているものを除いた、全てのパーミッションが不要となります。
 	 * これは、将来的に新しいパーミッションが追加された場合に、
 	 * そのパーミッションによって、この関数の実行が拒否される事を回避する事ができます。
@@ -228,10 +228,10 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * 開発時点で未知のパーミッションの扱いについては、
 	 * 処理系側やユーザー側の判断に委ねる事ができます。
 	 *
-	 * @param unnecessaryPermissions 不要なパーミッションを格納する配列
+	 * @param unnecessaryPermissionNames 不要なパーミッションの名称を格納する配列
 	 */
-	public void setUnnecessaryPermissions(String[] unnecessaryPermissions) {
-		this.unnecessaryPermissions = unnecessaryPermissions;
+	public void setUnnecessaryPermissionNames(String[] unnecessaryPermissionNames) {
+		this.unnecessaryPermissionNames = unnecessaryPermissionNames;
 	}
 
 
@@ -239,13 +239,13 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * この関数の実行に不要な全てのパーミッションを、配列にまとめて取得します。
 	 *
 	 * デフォルトでは、パーミッションが不要である事を意味する
-	 * { {@link ConnectorPermission#NONE ConnectorPermission.NONE}
+	 * { {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE}
 	 * が返されます。
 	 *
 	 * @return 不要なパーミッションを格納する配列
 	 */
-	public String[] getUnnecessaryPermissions() {
-		return this.unnecessaryPermissions;
+	public String[] getUnnecessaryPermissionNames() {
+		return this.unnecessaryPermissionNames;
 	}
 
 

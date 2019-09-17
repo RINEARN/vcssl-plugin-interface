@@ -27,11 +27,11 @@ import java.util.List;
 public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1 {
 
 
-	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermission#NONE ConnectorPermission.NONE} } ）です。 */
-	private static final String[] DEFAULT_NECESSARY_PERMISSIONS = { ConnectorPermission.NONE };
+	/** デフォルトの必要パーミッション配列（値は { {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE} } ）です。 */
+	private static final String[] DEFAULT_NECESSARY_PERMISSIONS = { ConnectorPermissionName.NONE };
 
-	/** デフォルトの不要パーミッション配列（値は { {@link ConnectorPermission#ALL ConnectorPermission.ALL} } ）です。 */
-	private static final String[] DEFAULT_UNNECESSARY_PERMISSIONS = { ConnectorPermission.ALL };
+	/** デフォルトの不要パーミッション配列（値は { {@link ConnectorPermissionName#ALL ConnectorPermissionName.ALL} } ）です。 */
+	private static final String[] DEFAULT_UNNECESSARY_PERMISSIONS = { ConnectorPermissionName.ALL };
 
 
 	/** ホスト言語側のクラスです。 */
@@ -41,10 +41,10 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 	private Object pluginInstance = null;
 
 	/** 必要パーミッション配列です。 */
-	private String[] necessaryPermissions = null;
+	private String[] necessaryPermissionNames = null;
 
 	/** 不要パーミッション配列です。 */
-	private String[] unnecessaryPermissions = null;
+	private String[] unnecessaryPermissionNames = null;
 
 
 
@@ -59,10 +59,10 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 		this.pluginClass = pluginClass;
 		this.pluginInstance = pluginInstance;
 
-		this.necessaryPermissions = Arrays.copyOf(
+		this.necessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_NECESSARY_PERMISSIONS, DEFAULT_NECESSARY_PERMISSIONS.length
 		);
-		this.unnecessaryPermissions = Arrays.copyOf(
+		this.unnecessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_UNNECESSARY_PERMISSIONS, DEFAULT_UNNECESSARY_PERMISSIONS.length
 		);
 	}
@@ -77,10 +77,10 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 	public ClassToXnci1Adapter(Class<?> pluginClass) {
 		this.pluginClass = pluginClass;
 
-		this.necessaryPermissions = Arrays.copyOf(
+		this.necessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_NECESSARY_PERMISSIONS, DEFAULT_NECESSARY_PERMISSIONS.length
 		);
-		this.unnecessaryPermissions = Arrays.copyOf(
+		this.unnecessaryPermissionNames = Arrays.copyOf(
 				DEFAULT_UNNECESSARY_PERMISSIONS, DEFAULT_UNNECESSARY_PERMISSIONS.length
 		);
 	}
@@ -99,24 +99,24 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 
 	/**
 	 * パーミッション設定ベースのセキュリティレイヤーを持つ処理系において、
-	 * この名前空間へのアクセスに必要な全てのパーミッションを、配列にまとめて設定します。
+	 * この名前空間へのアクセスに必要な全てのパーミッションの名称を、配列にまとめて設定します。
 	 *
-	 * @param necessaryPermissions 必要なパーミッションを格納する配列
+	 * @param necessaryPermissionNames 必要なパーミッションの名称を格納する配列
 	 */
-	public void setNecessaryPermissions(String[] necessaryPermissions) {
-		this.necessaryPermissions = necessaryPermissions;
+	public void setNecessaryPermissionNames(String[] necessaryPermissionNames) {
+		this.necessaryPermissionNames = necessaryPermissionNames;
 	}
 
 
 	/**
 	 * パーミッション設定ベースのセキュリティレイヤーを持つ処理系において、
-	 * この名前空間へのアクセスに必要な全てのパーミッションを、配列にまとめて取得します。
+	 * この名前空間へのアクセスに必要な全てのパーミッションの名称を、配列にまとめて取得します。
 	 *
 	 * パーミッションベースのセキュリティレイヤ―を持たない処理系では、
 	 * このメソッドは機能しません（呼び出されません）。
 	 *
 	 * このメソッドの戻り値に、
-	 * {@link ConnectorPermission#NONE ConnectorPermission.NONE}
+	 * {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE}
 	 * のみを格納する配列を返す事で、全てのパーミッションが不要となります。
 	 * 現状では、この名前空間に属する関数・変数のインターフェースである
 	 * {@link ExternalFunctionConnectorInterface1 XFCI1}/{@link ExternalFunctionConnectorInterface1 XVCI1}
@@ -127,34 +127,34 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 	 * それに属する関数・変数とは独立にパーミッション設定を行いたい用途が生じた場合のために、
 	 * 予約的に宣言されています。
 	 *
-	 * @return 必要なパーミッションを格納する配列
+	 * @return 必要なパーミッションの名称を格納する配列
 	 */
 	@Override
-	public String[] getNecessaryPermissions() {
-		return this.necessaryPermissions;
+	public String[] getNecessaryPermissionNames() {
+		return this.necessaryPermissionNames;
 	}
 
 
 	/**
 	 * パーミッション設定ベースのセキュリティレイヤーを持つ処理系において、
-	 * この関数の実行に不要な全てのパーミッションを、配列にまとめて設定します。
+	 * この関数の実行に不要な全てのパーミッションの名称を、配列にまとめて設定します。
 	 *
-	 * @param unnecessaryPermissions 不要なパーミッションを格納する配列
+	 * @param unnecessaryPermissionNames 不要なパーミッションの名称を格納する配列
 	 */
-	public void setUnnecessaryPermissions(String[] unnecessaryPermissions) {
-		this.unnecessaryPermissions = unnecessaryPermissions;
+	public void setUnnecessaryPermissionNames(String[] unnecessaryPermissionNames) {
+		this.unnecessaryPermissionNames = unnecessaryPermissionNames;
 	}
 
 
 	/**
 	 * パーミッション設定ベースのセキュリティレイヤーを持つ処理系において、
-	 * この名前空間へのアクセスに不要な全てのパーミッションを、配列にまとめて取得します。
+	 * この名前空間へのアクセスに不要な全てのパーミッションの名称を、配列にまとめて取得します。
 	 *
 	 * パーミッションベースのセキュリティレイヤ―を持たない処理系では、
 	 * このメソッドは機能しません（呼び出されません）。
 	 *
 	 * このメソッドの戻り値に
-	 * {@link ConnectorPermission#ALL ConnectorPermission.ALL} のみを格納する配列を返す事で、
+	 * {@link ConnectorPermissionName#ALL ConnectorPermissionName.ALL} のみを格納する配列を返す事で、
 	 * 必要パーミッション配列に含まれているものを除いた、全てのパーミッションが不要となります。
 	 * 現状では、この名前空間に属する関数・変数のインターフェースである
 	 * {@link ExternalFunctionConnectorInterface1 XFCI1}/{@link ExternalFunctionConnectorInterface1 XVCI1}
@@ -165,11 +165,11 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 	 * それに属する関数・変数とは独立にパーミッション設定を行いたい用途が生じた場合のために、
 	 * 予約的に宣言されています。
 	 *
-	 * @return 不要なパーミッションを格納する配列
+	 * @return 不要なパーミッションの名称を格納する配列
 	 */
 	@Override
-	public String[] getUnnecessaryPermissions() {
-		return this.unnecessaryPermissions;
+	public String[] getUnnecessaryPermissionNames() {
+		return this.unnecessaryPermissionNames;
 	}
 
 

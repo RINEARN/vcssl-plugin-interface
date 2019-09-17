@@ -150,7 +150,7 @@ public interface GeneralProcessConnectorInterface3 {
 
 	/**
 	 * パーミッション設定ベースのセキュリティレイヤーを持つ処理系において、
-	 * この関数の実行に必要な全てのパーミッションを、配列にまとめて取得します。
+	 * この関数の実行に必要な全てのパーミッションの名称を、配列にまとめて取得します。
 	 *
 	 * パーミッションベースのセキュリティレイヤ―を持たない処理系では、
 	 * このメソッドは機能しません（呼び出されません）。
@@ -161,21 +161,21 @@ public interface GeneralProcessConnectorInterface3 {
 	 * 前者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
 	 * なお、このメソッドの戻り値に、
-	 * {@link ConnectorPermission#NONE ConnectorPermission.NONE}
+	 * {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE}
 	 * のみを格納する配列を返す事で、全てのパーミッションが不要となります。
 	 * ただし、そのような事は、
 	 * この関数が一切のシステムリソースやネットワークにアクセスしない場合など、
 	 * スクリプト内で閉じた処理と同等以上のセキュリティが確保されている場合のみ行ってください。
 	 *
 	 * @param functionName 実行対象関数の関数名
-	 * @return 必要なパーミッションを格納する配列
+	 * @return 必要なパーミッションの名称を格納する配列
 	 */
-	public abstract String[] getNecessaryPermissions(String functionName);
+	public abstract String[] getNecessaryPermissionNames(String functionName);
 
 
 	/**
 	 * パーミッション設定ベースのセキュリティレイヤーを持つ処理系において、
-	 * この関数の実行に不要な全てのパーミッションを、配列にまとめて取得します。
+	 * この関数の実行に不要な全てのパーミッションの名称を、配列にまとめて取得します。
 	 *
 	 * パーミッションベースのセキュリティレイヤ―を持たない処理系では、
 	 * このメソッドは機能しません（呼び出されません）。
@@ -186,7 +186,7 @@ public interface GeneralProcessConnectorInterface3 {
 	 * 後者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
 	 *
 	 * なお、このメソッドの戻り値に
-	 * {@link ConnectorPermission#ALL ConnectorPermission.ALL} のみを格納する配列を返す事で、
+	 * {@link ConnectorPermissionName#ALL ConnectorPermissionName.ALL} のみを格納する配列を返す事で、
 	 * 必要パーミッション配列に含まれているものを除いた、全てのパーミッションが不要となります。
 	 * これは、将来的に新しいパーミッションが追加された場合に、
 	 * そのパーミッションによって、この関数の実行が拒否される事を回避する事ができます。
@@ -202,9 +202,9 @@ public interface GeneralProcessConnectorInterface3 {
 	 * 処理系側やユーザー側の判断に委ねる事ができます。
 	 *
 	 * @param functionName 実行対象関数の関数名
-	 * @return 不要なパーミッションを格納する配列
+	 * @return 不要なパーミッションの名称を格納する配列
 	 */
-	public abstract String[] getUnnecessaryPermissions(String functionName);
+	public abstract String[] getUnnecessaryPermissionNames(String functionName);
 
 
 	/**
