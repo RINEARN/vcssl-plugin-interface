@@ -179,7 +179,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * @return 可変長引数であればtrue
 	 */
 	@Override
-	public boolean isVariadicFunction() {
+	public boolean hasVariadicParameters() {
 		return this.method.isVarArgs();
 	}
 
