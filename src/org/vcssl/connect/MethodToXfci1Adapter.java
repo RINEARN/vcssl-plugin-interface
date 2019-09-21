@@ -135,14 +135,41 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 
 
 	/**
-	 * 戻り値のデータの型を表すClassインスタンスを取得します。
+	 * 全ての仮引数において、データ型が可変であるかどうかを格納する配列を返します。
 	 *
-	 * @param parameterClasses 全引数のデータ型のClassインスタンスを格納する配列
-	 * @return データ型のClassインスタンス
+	 * @return 全引数のデータ型が可変であるかどうかを格納する配列
 	 */
 	@Override
-	public Class<?> getReturnClass(Class<?>[] parameterClasses) {
-		return this.method.getReturnType();
+	public boolean[] getParameterClassArbitrarinesses() {
+		int numParameters = this.method.getParameterCount();
+		boolean[] result = new boolean[numParameters];
+		Arrays.fill(result, false);
+		return result;
+	}
+
+
+	/**
+	 * 全ての仮引数において、配列次元数が可変であるかどうかを格納する配列を返します。
+	 *
+	 * @return 全引数の配列次元数が可変であるかどうかを格納する配列
+	 */
+	@Override
+	public boolean[] getParameterRankArbitrarinesses() {
+		int numParameters = this.method.getParameterCount();
+		boolean[] result = new boolean[numParameters];
+		Arrays.fill(result, false);
+		return result;
+	}
+
+
+	/**
+	 * 仮引数の個数が任意であるかどうかを返します。
+	 *
+	 * @return 仮引数の個数が任意であるかどうか
+	 */
+	@Override
+	public boolean isParameterCountArbitrary() {
+		return false;
 	}
 
 
@@ -152,8 +179,20 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * @return 可変長引数であればtrue
 	 */
 	@Override
-	public boolean isVariadic() {
+	public boolean isVariadicFunction() {
 		return this.method.isVarArgs();
+	}
+
+
+	/**
+	 * 戻り値のデータの型を表すClassインスタンスを取得します。
+	 *
+	 * @param parameterClasses 全引数のデータ型のClassインスタンスを格納する配列
+	 * @return データ型のClassインスタンス
+	 */
+	@Override
+	public Class<?> getReturnClass(Class<?>[] parameterClasses) {
+		return this.method.getReturnType();
 	}
 
 
