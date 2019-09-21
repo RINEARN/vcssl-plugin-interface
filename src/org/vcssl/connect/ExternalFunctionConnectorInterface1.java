@@ -154,7 +154,7 @@ public interface ExternalFunctionConnectorInterface1 {
 	 * </p>
 	 *
 	 * <p>
-	 * なお、この機能を有効にした際の挙動は、{@link isVariadicFunction() }
+	 * なお、この機能を有効にした際の挙動は、{@link hasVariadicParameters() }
 	 * を有効にした際の挙動とは少し異なる事に留意してください。
 	 * 後者では、引数の型の適合性判断は、VCSSLの可変長引数の仕様に基づいて、
 	 * {@link invoke(Object[] arguments)} メソッドへの実引数の渡され方も異なります。
@@ -180,7 +180,7 @@ public interface ExternalFunctionConnectorInterface1 {
 	 *
 	 * @return 可変長引数であればtrue
 	 */
-	public abstract boolean isVariadicFunction();
+	public abstract boolean hasVariadicParameters();
 
 
 	/**
