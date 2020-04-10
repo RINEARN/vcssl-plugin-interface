@@ -53,7 +53,8 @@ public interface EngineConnectorInterface1 {
 	 * @param permissonName パーミッションの名称
 	 * @param requester パーミッションの要求元プラグイン
 	 * @param metaInformation ユーザーに通知するメッセージ内等で用いられるメタ情報
-	 * @return 許可されればtrue、却下されればfalse
+	 * @throws 要求したパーミッションが却下された場合にスローされます。
 	 */
-	public abstract boolean requestPermission(String permissonName, Object requester, Object metaInformation);
+	public abstract void requestPermission(String permissonName, Object requester, Object metaInformation)
+			throws ConnectorException;
 }
