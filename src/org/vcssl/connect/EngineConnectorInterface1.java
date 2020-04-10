@@ -46,4 +46,14 @@ public interface EngineConnectorInterface1 {
 	 */
 	public abstract Object getOptionValue(String optionName);
 
+
+	/**
+	 * 指定された名称のパーミッションを要求します。
+	 *
+	 * @param permissonName パーミッションの名称
+	 * @param requester パーミッションの要求元プラグイン
+	 * @param metaInformation ユーザーに通知するメッセージ内等で用いられるメタ情報
+	 * @return 許可されればtrue、却下されればfalse
+	 */
+	public abstract boolean requestPermission(String permissonName, Object requester, Object metaInformation);
 }
