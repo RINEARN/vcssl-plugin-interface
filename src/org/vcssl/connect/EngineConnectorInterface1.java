@@ -3,7 +3,7 @@
  * Engine Connector Interface 1
  * --------------------------------------------------
  * This file is released under CC0.
- * Written in 2018-2019 by RINEARN (Fumihiro Matsui)
+ * Written in 2018-2020 by RINEARN (Fumihiro Matsui)
  * ==================================================
  */
 
