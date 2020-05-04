@@ -12,7 +12,7 @@ package org.vcssl.connect;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,7 +79,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 		Method[] methods = this.pluginClass.getDeclaredMethods();
 
 		// XFCI1形式に変換したアダプタを格納するリスト
-		List<ExternalFunctionConnectorInterface1> xfciList = new LinkedList<ExternalFunctionConnectorInterface1>();
+		List<ExternalFunctionConnectorInterface1> xfciList = new ArrayList<ExternalFunctionConnectorInterface1>();
 
 		// メソッドを1つずつXFCI1形式に変換してリストに追加していく
 		for (Method method: methods) {
@@ -121,7 +121,7 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 		Field[] fields = this.pluginClass.getDeclaredFields();
 
 		// XVCI1形式に変換したアダプタを格納するリスト
-		List<ExternalVariableConnectorInterface1> xvciList = new LinkedList<ExternalVariableConnectorInterface1>();
+		List<ExternalVariableConnectorInterface1> xvciList = new ArrayList<ExternalVariableConnectorInterface1>();
 
 		// フィールドを1つずつXVCI1形式に変換してリストに追加していく
 		for (Field field: fields) {
@@ -151,59 +151,38 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 	}
 
 
-	/**
-	 * 処理系への接続時に必要な初期化処理を行います。
-	 *
-	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
-	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
-	 *
-	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
-	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
-	 */
-	public void initializeForConnection(Object engineConnector) throws ConnectorException {
+	// 以下、インターフェースで定義されている名前空間レベルでの初期化/終了時処理
+	// （このクラスでは特に何もしない）
+
+	@Override
+	public void preInitializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
-
-	/**
-	 * 処理系からの接続解除時に必要な終了時処理を行います。
-	 *
-	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
-	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
-	 *
-	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
-	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
-	 */
-	public void finalizeForDisconnection(Object engineConnector) throws ConnectorException {
+	@Override
+	public void postInitializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
-
-	/**
-	 * スクリプト実行毎の初期化処理を行います。
-	 *
-	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
-	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
-	 *
-	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
-	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
-	 */
-	public void initializeForExecution(Object engineConnector) throws ConnectorException {
+	@Override
+	public void preFinalizeForDisconnection(Object engineConnector) throws ConnectorException {
 	}
 
-
-	/**
-	 * スクリプト実行毎の終了時処理を行います。
-	 *
-	 * 引数には、スクリプトエンジンに依存するやり取りを行うためのオブジェクトが渡されます。
-	 * このオブジェクトは、恐らく {@link EngineConnectorInterface1 EngineConnectorInterface1}
-	 * もしくはその後継の、抽象化されたインターフェースでラップされた形で渡されます。
-	 *
-	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
-	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
-	 */
-	public void finalizeForTermination(Object engineConnector) throws ConnectorException {
+	@Override
+	public void postFinalizeForDisconnection(Object engineConnector) throws ConnectorException {
 	}
 
+	@Override
+	public void preInitializeForExecution(Object engineConnector) throws ConnectorException {
+	}
+
+	@Override
+	public void postInitializeForExecution(Object engineConnector) throws ConnectorException {
+	}
+
+	@Override
+	public void preFinalizeForTermination(Object engineConnector) throws ConnectorException {
+	}
+
+	@Override
+	public void postFinalizeForTermination(Object engineConnector) throws ConnectorException {
+	}
 }
