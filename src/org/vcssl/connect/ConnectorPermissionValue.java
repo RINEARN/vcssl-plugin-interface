@@ -30,8 +30,8 @@ package org.vcssl.connect;
 public class ConnectorPermissionValue {
 
 	/**
-	 * <span class="jang-ja">
-	 * Requesting for permission items having this value will always be allowed
+	 * <span class="jang-en">
+	 * Requests for permission items having this value will always be allowed
 	 * </span>
 	 * <span class="jang-ja">
 	 * この値を持つパーミッション項目は, リクエストが常に許可されます
@@ -41,8 +41,8 @@ public class ConnectorPermissionValue {
 	public static final String ALLOW = "ALLOW";
 
 	/**
-	 * <span class="jang-ja">
-	 * Requesting for permission items having this value will always be denied
+	 * <span class="jang-en">
+	 * Requests for permission items having this value will always be denied
 	 * </span>
 	 * <span class="jang-ja">
 	 * この値を持つパーミッション項目は, リクエストが常に拒否されます
@@ -52,7 +52,7 @@ public class ConnectorPermissionValue {
 	public static final String DENY = "DENY";
 
 	/**
-	 * <span class="jang-ja">
+	 * <span class="jang-en">
 	 * When permission items having this value are requested,
 	 * the script engine asks the user whether allows it or not
 	 * </span>
