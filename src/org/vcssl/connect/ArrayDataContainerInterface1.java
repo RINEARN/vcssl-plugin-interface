@@ -72,10 +72,10 @@ public interface ArrayDataContainerInterface1<T> {
 
 
 	/** 動的ロード時などに処理系側から参照される、インターフェースの形式名（値は"ADCI"）です。*/
-	public static String INTERFACE_TYPE = "ADCI";
+	public static final String INTERFACE_TYPE = "ADCI";
 
 	/** 動的ロード時などに処理系側から参照される、インターフェースの世代名（値は"1"）です。*/
-	public static String INTERFACE_GENERATION = "1";
+	public static final String INTERFACE_GENERATION = "1";
 
 
 	/** スカラ値を格納している場合におけるサイズ（値は 1 ）です。 */
