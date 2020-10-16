@@ -29,12 +29,6 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	/** ホスト言語のフィールドが属するオブジェクトのインスタンスです。 */
 	private Object objectInstance = null;
 
-	/** 必要パーミッション配列です。 */
-	private String[] necessaryPermissionNames = null;
-
-	/** 不要パーミッション配列です。 */
-	private String[] unnecessaryPermissionNames = null;
-
 
 	/**
 	 * 指定されたホスト言語側のインスタンスフィールドを、
@@ -118,87 +112,6 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	@Override
 	public boolean isDataConversionNecessary() {
 		return true;
-	}
-
-
-	/**
-	 * この変数のデータの読み書きに必要な全てのパーミッションの名称を、配列にまとめて設定します。
-	 *
-	 * このメソッドで設定される必要パーミッション配列と、
-	 * {@link FieldToXvci1Adapter#setUnnecessaryPermissions setUnnecessaryPermissions}
-	 * メソッドで設定される不要パーミッション配列において、重複している要素がある場合は、
-	 * 前者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
-	 *
-	 * なお、このメソッドの引数に、
-	 * {@link ConnectorPermissionName#ALL ConnectorPermissionName.NONE}
-	 * のみを格納する配列を渡す事で、全てのパーミッションが不要となります。
-	 * ただし、そのような事は、
-	 * この関数が一切のシステムリソースやネットワークにアクセスしない場合など、
-	 * スクリプト内で閉じた処理と同等以上のセキュリティが確保されている場合のみ行ってください。
-	 *
-	 * @param necessaryPermissionNames 必要なパーミッションの名称を格納する配列
-	 */
-	public void setNecessaryPermissionNames(String[] necessaryPermissionNames) {
-		this.necessaryPermissionNames = necessaryPermissionNames;
-	}
-
-
-	/**
-	 * この変数のデータの読み書きに必要な全てのパーミッションの名称を、配列にまとめて返します。
-	 *
-	 * デフォルトでは、パーミッションが不要である事を意味する
-	 * { {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE}
-	 * が返されます。
-	 *
-	 * @return 必要なパーミッションの名称を格納する配列
-	 */
-	public String[] getNecessaryPermissionNames() {
-		return this.necessaryPermissionNames;
-	}
-
-
-	/**
-	 * この変数のデータの読み書きに不要な全てのパーミッションの名称を、配列にまとめて設定します。
-	 *
-	 * このメソッドで設定される不要パーミッション配列と、
-	 * {@link FieldToXvci1Adapter#getNecessaryPermissions getNecessaryPermissions}
-	 * メソッドで設定される必要パーミッション配列において、重複している要素がある場合は、
-	 * 後者の方が優先されます（つまり、そのパーミッションは必要と判断されます）。
-	 *
-	 * なお、このメソッドの引数に
-	 * {@link ConnectorPermissionName#ALL ConnectorPermissionName.ALL} のみを格納する配列を返す事で、
-	 * 必要パーミッション配列に含まれているものを除いた、全てのパーミッションが不要となります。
-	 * これは、将来的に新しいパーミッションが追加された場合に、
-	 * そのパーミッションによって、この関数の実行が拒否される事を回避する事ができます。
-	 *
-	 * ただし、セキュリティが重要となる用途に使用するプラグインの開発においては、
-	 * そのような事自体がそもそも好ましくない事に注意する必要があります。
-	 * そのようなセキュリティ重要度の高い用途に向けたプラグインの開発に際しては、
-	 * 開発時点で存在する個々のパーミッションについて、
-	 * 不要である事が判明しているものだけを設定するようにしてください。
-	 *
-	 * そうすれば、必要・不要のどちらにも含まれない、
-	 * 開発時点で未知のパーミッションの扱いについては、
-	 * 処理系側やユーザー側の判断に委ねる事ができます。
-	 *
-	 * @param unnecessaryPermissionNames 不要なパーミッションの名称を格納する配列
-	 */
-	public void setUnnecessaryPermissionNames(String[] unnecessaryPermissionNames) {
-		this.unnecessaryPermissionNames = unnecessaryPermissionNames;
-	}
-
-
-	/**
-	 * この変数のデータの読み書きに不要な全てのパーミッションの名称を、配列にまとめて取得します。
-	 *
-	 * デフォルトでは、パーミッションが不要である事を意味する
-	 * { {@link ConnectorPermissionName#NONE ConnectorPermissionName.NONE}
-	 * が返されます。
-	 *
-	 * @return 不要なパーミッションの名称を格納する配列
-	 */
-	public String[] getUnnecessaryPermissionNames() {
-		return this.unnecessaryPermissionNames;
 	}
 
 
