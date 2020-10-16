@@ -66,6 +66,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 *
 	 * @return 変数名
 	 */
+	@Override
 	public String getVariableName() {
 		return this.field.getName();
 	}
@@ -76,8 +77,24 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 *
 	 * @return データ型のClassインスタンス
 	 */
+	@Override
 	public Class<?> getDataClass() {
 		return this.field.getType();
+	}
+
+
+	/**
+	 * データの自動変換を無効化している場合
+	 * ({@link ExternalFunctionConnectorInterface1#isDataConversionNecessary()} が false を返す場合)
+	 * において、データのやり取りに使用するデータコンテナの型を表すClassインスタンスを取得します。
+	 *
+	 * ただし、この実装では上記メソッドは true を返すため、このメソッドの戻り値は参照されません。
+	 *
+	 * @return データのやり取りに使用するデータコンテナの型を表すClassインスタンス
+	 */
+	@Override
+	public Class<?> getDataUnconvertedClass() {
+		return null;
 	}
 
 
@@ -86,6 +103,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 *
 	 * @return 定数であればtrue
 	 */
+	@Override
 	public boolean isConstant() {
 		return Modifier.isFinal(field.getModifiers());
 	}
@@ -97,6 +115,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 *
 	 * @return 常にtrue
 	 */
+	@Override
 	public boolean isDataConversionNecessary() {
 		return true;
 	}
@@ -186,6 +205,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	/**
 	 * 変数のデータを取得します。
 	 */
+	@Override
 	public Object getData() throws ConnectorException {
 		try {
 			return this.field.get(this.objectInstance);
@@ -212,6 +232,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 * データの自動変換が無効化されている場合において、変数のデータを取得します。
 	 * このアダプタでは、この機能は使用されません。
 	 */
+	@Override
 	public void getData(Object dataContainer) throws ConnectorException {
 	}
 
@@ -221,6 +242,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 *
 	 * @param data 変数のデータ
 	 */
+	@Override
 	public void setData(Object data) throws ConnectorException {
 		try {
 			this.field.set(this.objectInstance, data);
@@ -253,6 +275,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
+	@Override
 	public void initializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
@@ -267,6 +290,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
+	@Override
 	public void finalizeForDisconnection(Object engineConnector) throws ConnectorException {
 	}
 
@@ -281,6 +305,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 * @throws ConnectorException 初期化処理に失敗した場合にスローされます。
 	 */
+	@Override
 	public void initializeForExecution(Object engineConnector) throws ConnectorException {
 	}
 
@@ -295,6 +320,7 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	 * @param engineConnector エンジンに依存するやり取りを行うためのオブジェクト
 	 * @throws ConnectorException 終了時処理に失敗した場合にスローされます。
 	 */
+	@Override
 	public void finalizeForTermination(Object engineConnector) throws ConnectorException {
 	}
 

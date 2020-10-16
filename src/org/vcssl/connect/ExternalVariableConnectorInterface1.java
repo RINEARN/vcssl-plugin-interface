@@ -81,6 +81,20 @@ public interface ExternalVariableConnectorInterface1 {
 
 
 	/**
+	 * データの自動変換を無効化している場合
+	 * ({@link ExternalFunctionConnectorInterface1#isDataConversionNecessary()} が false を返す場合)
+	 * において、データのやり取りに使用するデータコンテナの型を表すClassインスタンスを取得します。
+	 *
+	 * ただし、どのようなデータコンテナが使用可能かは、処理系の種類や世代に依存します。
+	 * サポートされていないデータコンテナの型を返した場合は、接続時や実行開始時、
+	 * または値へのアクセス時（処理系依存）にエラーとして検出され、例外が発生します。
+	 *
+	 * @return データのやり取りに使用するデータコンテナの型を表すClassインスタンス
+	 */
+	public abstract Class<?> getDataUnconvertedClass();
+
+
+	/**
 	 * 書き換え不可能な定数であるかどうかを判定します。
 	 *
 	 * @return 定数であればtrue
