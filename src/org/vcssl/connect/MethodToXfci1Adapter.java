@@ -3,7 +3,7 @@
  * Method to XFCI Plug-in Adapter
  * --------------------------------------------------
  * This file is released under CC0.
- * Written in 2017-2019 by RINEARN (Fumihiro Matsui)
+ * Written in 2017-2020 by RINEARN (Fumihiro Matsui)
  * ==================================================
  */
 
