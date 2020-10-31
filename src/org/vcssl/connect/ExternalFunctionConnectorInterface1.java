@@ -134,7 +134,7 @@ public interface ExternalFunctionConnectorInterface1 {
 	 *
 	 * @return 各仮引数のデータのやり取りに使用するデータコンテナの型を表すClass配列
 	 */
-	public abstract Class<?>[] getParameterDataUnconvertedClasses();
+	public abstract Class<?>[] getParameterUnconvertedClasses();
 
 
 	/**

@@ -117,7 +117,7 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	 * @return 各仮引数のデータのやり取りに使用するデータコンテナの型を表すClass配列
 	 */
 	@Override
-	public Class<?>[] getParameterDataUnconvertedClasses() {
+	public Class<?>[] getParameterUnconvertedClasses() {
 		return null;
 	}
 
