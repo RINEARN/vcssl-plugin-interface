@@ -104,6 +104,48 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 
 
 	/**
+	 * この変数が、別の変数の参照であるかどうかを返します。
+	 *
+	 * 現在の処理系では、この機能は言語仕様においてサポートされていませんが、
+	 * 将来的な拡張の可能性を考慮して、予約的に定義されています。
+	 * そのため、現状では常に false を返します。
+	 *
+	 * @return 参照であれば true
+	 */
+	public boolean isReference() {
+		return false;
+	}
+
+
+	/**
+	 * データ型が可変であるかどうかを返します。
+	 *
+	 * 現在の処理系では、この機能は言語仕様においてサポートされていませんが、
+	 * 将来的な拡張の可能性を考慮して、予約的に定義されています。
+	 * そのため、現状では常に false を返します。
+	 *
+	 * @return データ型が可変であれば true
+	 */
+	public boolean isDataClassArbitrary() {
+		return false;
+	}
+
+
+	/**
+	 * 配列次元数が可変であるかどうかを返します。
+	 *
+	 * 現在の処理系では、この機能は言語仕様においてサポートされていませんが、
+	 * 将来的な拡張の可能性を考慮して、予約的に定義されています。
+	 * そのため、現状では常に false を返します。
+	 *
+	 * @return 配列次元数が可変であれば true
+	 */
+	public boolean isDataRankArbitrary() {
+		return false;
+	}
+
+
+	/**
 	 * データの自動変換が必要かどうかを返します。
 	 * このアダプタではデータ変換が必須であるため、常にtrueを返します。
 	 *
