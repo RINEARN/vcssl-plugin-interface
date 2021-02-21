@@ -4,7 +4,7 @@
  * ( for VCSSL / Vnano Plug-in Development )
  * --------------------------------------------------
  * This file is released under CC0.
- * Written in 2019-2020 by RINEARN (Fumihiro Matsui)
+ * Written in 2019-2021 by RINEARN (Fumihiro Matsui)
  * ==================================================
  */
 
@@ -92,6 +92,14 @@ public interface ExternalNamespaceConnectorInterface1 {
 	 * @return この名前空間に属する変数をまとめた配列
 	 */
 	public abstract ExternalVariableConnectorInterface1[] getVariables();
+
+
+	/**
+	 * この名前空間に属する全ての構造体を、配列にまとめて返します。
+	 *
+	 * @return この名前空間に属する構造体をまとめた配列
+	 */
+	public abstract ExternalStructConnectorInterface1[] getStructs();
 
 
 	/**
