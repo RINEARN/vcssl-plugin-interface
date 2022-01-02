@@ -13,7 +13,7 @@ package org.vcssl.connect;
 /**
  * <p>
  * <span class="lang-en">
- * An data-I/O interface (abbreviated as ADAI 1), mainly implemented by data container objects of language processor systems
+ * A data-I/O interface (abbreviated as ADAI 1), mainly implemented by data container objects of language processor systems
  * </span>
  * <span class="lang-ja">
  * 主に処理系のデータコンテナが実装してサポートする, データ入出力インターフェースの一つ（略称 ADAI 1）です

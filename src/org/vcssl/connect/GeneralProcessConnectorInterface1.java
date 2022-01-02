@@ -12,7 +12,7 @@ package org.vcssl.connect;
 
 /**
  * <p>
- * <span class="lang-en">An legacy interface for implementing GPCI 1 plug-ins</span>
+ * <span class="lang-en">A legacy interface for implementing GPCI 1 plug-ins</span>
  * <span class="lang-ja">GPCI 1 形式のプラグインを実装するためのレガシーインターフェースです</span>
  * .
  * </p>
