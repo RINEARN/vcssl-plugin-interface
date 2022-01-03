@@ -80,7 +80,7 @@ public interface GeneralProcessConnectorInterface3 {
 	 *     <span class="lang-en">An array storing return value of the function</span>
 	 *     <span class="lang-ja">関数の戻り値を格納する配列</span>
 	 */
-	public abstract String[] process( String functionName, String[] args );
+	public abstract String[] process(String functionName, String[] arguments);
 
 
 	/**

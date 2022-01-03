@@ -71,15 +71,15 @@ public class ConnectorPermissionName {
 	 * <p>
 	 * <span class="lang-en">
 	 * For permission items of which values are not specified explicitly, 
-	 * a default value (e.g. {@link ConnectorPermissionValue.DENY}) will be set automatically.
+	 * a default value (e.g. {@link ConnectorPermissionValue#DENY DENY}) will be set automatically.
 	 * You can change that default value by setting the value to this meta permission item.
-	 * For example, if you set the value {@link ConnectorPermissionValue.ASK} to this permission item "DEFAULT", 
+	 * For example, if you set the value {@link ConnectorPermissionValue#ASK ASK} to this permission item "DEFAULT", 
 	 * the script engine will ask to the user when non-specified permissions are required.
 	 * </span>
 	 * <span class="lang-ja">
-	 * 明示的に設定されていないパーミッション項目には, デフォルト値（例えば {@link ConnectorPermissionValue.DENY} など）
+	 * 明示的に設定されていないパーミッション項目には, デフォルト値（例えば {@link ConnectorPermissionValue#DENY DENY} など）
 	 * が自動的に設定されます. このデフォルト値は, このメタパーミッション項目「 DEFAULT 」の値を変える事で変更できます. 
-	 * 例えば, この「 DEFAULT 」項目に値 {@link ConnectorPermissionValue.ASK} を設定すると, 
+	 * 例えば, この「 DEFAULT 」項目に値 {@link ConnectorPermissionValue#ASK ASK} を設定すると, 
 	 * スクリプトエンジンは, 未設定のパーミッションが要求された際に, ユーザーに許可/拒否を尋ねるようになります. 
 	 * </span>
 	 * </p>

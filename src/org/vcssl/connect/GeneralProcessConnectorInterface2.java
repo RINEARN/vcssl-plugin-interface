@@ -65,7 +65,7 @@ public interface GeneralProcessConnectorInterface2 {
 	 *     <span class="lang-en">An array storing return value of the function</span>
 	 *     <span class="lang-ja">関数の戻り値を格納する配列</span>
 	 */
-	public String[] process( String functionName, String[] args );
+	public String[] process(String functionName, String[] arguments);
 
 
 	/**
