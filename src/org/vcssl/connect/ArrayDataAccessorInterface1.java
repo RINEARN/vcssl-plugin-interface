@@ -42,11 +42,11 @@ package org.vcssl.connect;
 public interface ArrayDataAccessorInterface1<T> {
 
 	/**
-	 * <span class="lang-en">The type name of this interface (value: "ADAI") referred when the plug-in will be loaded</span>
-	 * <span class="lang-ja">プラグインのロード時に参照される、このインターフェースの形式名（値: "ADAI"）です</span>
+	 * <span class="lang-en">The type ID of this interface (value: "ADAI") referred when the plug-in will be loaded</span>
+	 * <span class="lang-ja">プラグインのロード時に参照される、このインターフェースの形式ID（値: "ADAI"）です</span>
 	 * .
 	 */
-	public static final String INTERFACE_TYPE = "ADAI";
+	public static final String INTERFACE_TYPE_ID = "ADAI";
 
 	/**
 	 * <span class="lang-en">The generation of this interface (value: "1")</span>

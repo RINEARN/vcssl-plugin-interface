@@ -34,6 +34,20 @@ package org.vcssl.connect;
 public interface EngineConnectorInterface1 {
 
 	/**
+	 * <span class="lang-en">The type ID of this interface (value: "ECI") referred when the plug-in will be loaded</span>
+	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式ID（値: "ECI"）です</span>
+	 * .
+	 */
+	public static final String INTERFACE_TYPE_ID = "ECI";
+
+	/**
+	 * <span class="lang-en">The generation of this interface (value: "1")</span>
+	 * <span class="lang-ja">このインターフェースの世代名です（値: "1"）</span>
+	 * .
+	 */
+	public static final String INTERFACE_GENERATION = "1";
+
+	/**
 	 * <span class="lang-en">Returns whether the engine has the value of the option with the specified name</span>
 	 * <span class="lang-ja">指定された名称のオプションの値が設定されているかどうかを返します</span>
 	 * .

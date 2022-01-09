@@ -39,11 +39,11 @@ public interface StringScalarDataAccessorInterface1 {
 
 
 	/**
-	 * <span class="lang-en">The type name of this interface (value: "STRING_SDAI") referred when the plug-in will be loaded</span>
-	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式名（値: "STRING_SDAI"）です</span>
+	 * <span class="lang-en">The type ID of this interface (value: "STRING_SDAI") referred when the plug-in will be loaded</span>
+	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式ID（値: "STRING_SDAI"）です</span>
 	 * .
 	 */
-	public static final String INTERFACE_TYPE = "STRING_SDAI";
+	public static final String INTERFACE_TYPE_ID = "STRING_SDAI";
 
 	/**
 	 * <span class="lang-en">The generation of this interface (value: "1")</span>

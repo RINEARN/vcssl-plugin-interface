@@ -189,6 +189,11 @@ public class MethodToXfci1Adapter implements ExternalFunctionConnectorInterface1
 	}
 
 	@Override
+	public Class<?> getEngineConnectorClass() {
+		return EngineConnectorInterface1.class;
+	}
+
+	@Override
 	public void initializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
