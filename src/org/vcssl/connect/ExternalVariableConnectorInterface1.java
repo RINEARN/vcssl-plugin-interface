@@ -348,6 +348,53 @@ public interface ExternalVariableConnectorInterface1 {
 	/**
 	 * <p>
 	 * <span class="lang-en">
+	 * Returns the Class-instance representing the interface or the class for communicating with the script engine
+	 * </span>
+	 * <span class="lang-ja">
+	 * スクリプトエンジンと情報をやり取りする際に使用するオブジェクトの, インターフェースまたはクラスを返します
+	 * </span>
+	 * .
+	 * </p>
+	 * 
+	 * <p>
+	 * <span class="lang-en">
+	 * The instance of the specified interface/class by this method will be passed to the argument of 
+	 * {@link initializeForConnection(Object)}, {@link initializeForExecution(Object)},
+	 * {@link finalizeForTermination(Object)}, {@link finalizeForDisconnection(Object)} methods.
+	 * </span>
+	 * <span class="lang-ja">
+	 * このメソッドで戻り値として指定したインターフェースまたはクラスの実装インスタンスが, 
+	 * {@link initializeForConnection(Object)}, {@link initializeForExecution(Object)}, 
+	 * {@link finalizeForTermination(Object)}, {@link finalizeForDisconnection(Object)}
+	 * メソッドの引数として渡されます.
+	 * </span>
+	 * </p>
+	 * 
+	 * <p>
+	 * <span class="lang-en">
+	 * Available interfaces depend on the script engine, but at least, 
+	 * {@link EngineConnectorInterface1 ECI 1} is guaranteed to be available by the specification of XVCI 1.
+	 * </span>
+	 * <span class="lang-ja">
+	 * どのようなインターフェース/クラスが利用可能かはスクリプトエンジンに依存しますが, 
+	 * 少なくとも {@link EngineConnectorInterface1 ECI 1} は利用可能である事が, XVCI 1 の仕様上保証されます. 
+	 * </span>
+	 * </p>
+	 * 
+	 * @return
+	 *     <span class="lang-en">
+	 *         Class-instances representing the interface/class for communicating with the script engine
+	 *     </span>
+	 *     <span class="lang-ja">
+	 *         スクリプトエンジンと情報をやり取りする際に使用するインターフェースまたはクラス
+	 *     </span>
+	 */
+	public abstract Class<?> getEngineConnectorClass();
+
+
+	/**
+	 * <p>
+	 * <span class="lang-en">
 	 * Performs the initialization process necessary when this plug-in is connected to the script engine
 	 * </span>
 	 * <span class="lang-ja">
@@ -359,13 +406,13 @@ public interface ExternalVariableConnectorInterface1 {
 	 * <p>
 	 * <span class="lang-en">
 	 * As an argument "engineConnector", an object for communicating with the script engine will be passed.
-	 * The type of the object depends on the script engine, but it is probably implementing
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} interface.
+	 * The type of the object is specified by {@link getEngineConnectorClass()} method.
+	 * At least, {@link EngineConnectorInterface1 ECI 1} is guaranteed to be available by the specification of XVCI 1.
 	 * </span>
 	 * <span class="lang-ja">
 	 * 引数 engineConnector には, スクリプトエンジンと情報をやり取りする際に使用するオブジェクトが渡されます. 
-	 * このオブジェクトの型はスクリプトエンジンに依存しますが, 恐らくは 
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} インターフェースを実装しています.
+	 * そのオブジェクトの型は, {@link getEngineConnectorClass()} メソッドの戻り値として指定します.
+	 * 少なくとも {@link EngineConnectorInterface1 ECI 1} は利用可能である事が, XVCI 1 の仕様上保証されます.
 	 * </span>
 	 * </p>
 	 *
@@ -394,13 +441,13 @@ public interface ExternalVariableConnectorInterface1 {
 	 * <p>
 	 * <span class="lang-en">
 	 * As an argument "engineConnector", an object for communicating with the script engine will be passed.
-	 * The type of the object depends on the script engine, but it is probably implementing
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} interface.
+	 * The type of the object is specified by {@link getEngineConnectorClass()} method.
+	 * At least, {@link EngineConnectorInterface1 ECI 1} is guaranteed to be available by the specification of XVCI 1.
 	 * </span>
 	 * <span class="lang-ja">
 	 * 引数 engineConnector には, スクリプトエンジンと情報をやり取りする際に使用するオブジェクトが渡されます. 
-	 * このオブジェクトの型はスクリプトエンジンに依存しますが, 恐らくは 
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} インターフェースを実装しています.
+	 * そのオブジェクトの型は, {@link getEngineConnectorClass()} メソッドの戻り値として指定します.
+	 * 少なくとも {@link EngineConnectorInterface1 ECI 1} は利用可能である事が, XVCI 1 の仕様上保証されます.
 	 * </span>
 	 * </p>
 	 *
@@ -425,13 +472,13 @@ public interface ExternalVariableConnectorInterface1 {
 	 * <p>
 	 * <span class="lang-en">
 	 * As an argument "engineConnector", an object for communicating with the script engine will be passed.
-	 * The type of the object depends on the script engine, but it is probably implementing
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} interface.
+	 * The type of the object is specified by {@link getEngineConnectorClass()} method.
+	 * At least, {@link EngineConnectorInterface1 ECI 1} is guaranteed to be available by the specification of XVCI 1.
 	 * </span>
 	 * <span class="lang-ja">
 	 * 引数 engineConnector には, スクリプトエンジンと情報をやり取りする際に使用するオブジェクトが渡されます. 
-	 * このオブジェクトの型はスクリプトエンジンに依存しますが, 恐らくは 
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} インターフェースを実装しています.
+	 * そのオブジェクトの型は, {@link getEngineConnectorClass()} メソッドの戻り値として指定します.
+	 * 少なくとも {@link EngineConnectorInterface1 ECI 1} は利用可能である事が, XVCI 1 の仕様上保証されます.
 	 * </span>
 	 * </p>
 	 *
@@ -456,13 +503,13 @@ public interface ExternalVariableConnectorInterface1 {
 	 * <p>
 	 * <span class="lang-en">
 	 * As an argument "engineConnector", an object for communicating with the script engine will be passed.
-	 * The type of the object depends on the script engine, but it is probably implementing
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} interface.
+	 * The type of the object is specified by {@link getEngineConnectorClass()} method.
+	 * At least, {@link EngineConnectorInterface1 ECI 1} is guaranteed to be available by the specification of XVCI 1.
 	 * </span>
 	 * <span class="lang-ja">
 	 * 引数 engineConnector には, スクリプトエンジンと情報をやり取りする際に使用するオブジェクトが渡されます. 
-	 * このオブジェクトの型はスクリプトエンジンに依存しますが, 恐らくは 
-	 * {@link EngineConnectorInterface1 EngineConnectorInterface1} インターフェースを実装しています.
+	 * そのオブジェクトの型は, {@link getEngineConnectorClass()} メソッドの戻り値として指定します.
+	 * 少なくとも {@link EngineConnectorInterface1 ECI 1} は利用可能である事が, XVCI 1 の仕様上保証されます.
 	 * </span>
 	 * </p>
 	 *

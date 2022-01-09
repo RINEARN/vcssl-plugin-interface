@@ -155,6 +155,11 @@ public class FieldToXvci1Adapter implements ExternalVariableConnectorInterface1 
 	}
 
 	@Override
+	public Class<?> getEngineConnectorClass() {
+		return EngineConnectorInterface1.class;
+	}
+
+	@Override
 	public void initializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 

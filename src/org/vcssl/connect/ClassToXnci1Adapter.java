@@ -161,6 +161,11 @@ public class ClassToXnci1Adapter implements ExternalNamespaceConnectorInterface1
 	}
 
 	@Override
+	public Class<?> getEngineConnectorClass() {
+		return EngineConnectorInterface1.class;
+	}
+
+	@Override
 	public void preInitializeForConnection(Object engineConnector) throws ConnectorException {
 	}
 
