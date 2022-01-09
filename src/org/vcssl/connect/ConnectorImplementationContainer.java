@@ -24,11 +24,11 @@ public class ConnectorImplementationContainer {
 	private Object connectorImplementation = null;
 
 	/**
-	 * <span class="lang-en">Stores the (abbreviated) type name of the interface, implemented by the loaded plug-in</span>
-	 * <span class="lang-ja">読み込まれたプラグインが実装している, インターフェースの形式名（略称）を保持します</span>
+	 * <span class="lang-en">Stores the type ID (abbreviated name) of the interface, implemented by the loaded plug-in</span>
+	 * <span class="lang-ja">読み込まれたプラグインが実装している, インターフェースの形式ID（略称）を保持します</span>
 	 * .
 	 */
-	private String interfaceType = null;
+	private String interfaceTypeId = null;
 
 	/**
 	 * <span class="lang-en">Stores the generation of the interface, implemented by the loaded plug-in</span>
@@ -46,19 +46,19 @@ public class ConnectorImplementationContainer {
 	 *     <span class="lang-en">The loaded object implementing plug-in connector interfaces</span>
 	 *     <span class="lang-ja">読み込まれたプラグイン接続インターフェース実装オブジェクト</span>
 	 * 
-	 * @param interfaceType
-	 *     <span class="lang-en">The (abbreviated) type name of the interface</span>
-	 *     <span class="lang-ja">インターフェースの形式名（略称）</span>
+	 * @param interfaceTypeId
+	 *     <span class="lang-en">The type ID (abbreviated name) of the interface</span>
+	 *     <span class="lang-ja">インターフェースの形式ID（略称）</span>
 	 * 
 	 * @param interfaceGeneration
 	 *     <span class="lang-en">The generation of the interface</span>
 	 *     <span class="lang-ja">インターフェースの世代</span>
 	 */
 	public ConnectorImplementationContainer(
-			Object connectorImplementation, String interfaceType, String interfaceGeneration) {
+			Object connectorImplementation, String interfaceTypeId, String interfaceGeneration) {
 
 		this.connectorImplementation = connectorImplementation;
-		this.interfaceType = interfaceType;
+		this.interfaceTypeId = interfaceTypeId;
 		this.interfacaGeneration = interfaceGeneration;
 	}
 
@@ -77,15 +77,15 @@ public class ConnectorImplementationContainer {
 
 
 	/**
-	 * <span class="lang-en">Returns the (abbreviated) type name of the interface, implemented by the loaded plug-in</span>
-	 * <span class="lang-ja">読み込まれたプラグインが実装している, インターフェースの形式名（略称）を返します</span>
+	 * <span class="lang-en">Returns the type ID (abbreviated name) of the interface, implemented by the loaded plug-in</span>
+	 * <span class="lang-ja">読み込まれたプラグインが実装している, インターフェースの形式ID（略称）を返します</span>
 	 * .
 	 * @return
-	 *     <span class="lang-en">The (abbreviated) type name of the interface</span>
-	 *     <span class="lang-ja">インターフェースの形式名（略称）</span>
+	 *     <span class="lang-en">The type ID (abbreviated name) of the interface</span>
+	 *     <span class="lang-ja">インターフェースの形式ID（略称）</span>
 	 */
-	public String getInterfaceType() {
-		return this.interfaceType;
+	public String getInterfaceTypeId() {
+		return this.interfaceTypeId;
 	}
 
 

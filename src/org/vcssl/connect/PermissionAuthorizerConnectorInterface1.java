@@ -103,11 +103,11 @@ import java.util.Map;
 public interface PermissionAuthorizerConnectorInterface1 {
 
 	/**
-	 * <span class="lang-en">The type name of this interface (value: "PACI") referred when the plug-in will be loaded</span>
-	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式名（値: "PACI"）です</span>
+	 * <span class="lang-en">The type ID of this interface (value: "PACI") referred when the plug-in will be loaded</span>
+	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式ID（値: "PACI"）です</span>
 	 * .
 	 */
-	public static final String INTERFACE_TYPE = "PACI";
+	public static final String INTERFACE_TYPE_ID = "PACI";
 
 	/**
 	 * <span class="lang-en">The generation of this interface (value: "1")</span>

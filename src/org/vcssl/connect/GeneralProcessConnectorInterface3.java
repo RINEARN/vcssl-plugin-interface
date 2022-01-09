@@ -31,11 +31,11 @@ package org.vcssl.connect;
 public interface GeneralProcessConnectorInterface3 {
 
 	/**
-	 * <span class="lang-en">The type name of this interface (value: "GPCI") referred when the plug-in will be loaded</span>
-	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式名（値: "GPCI"）です</span>
+	 * <span class="lang-en">The type ID of this interface (value: "GPCI") referred when the plug-in will be loaded</span>
+	 * <span class="lang-ja">プラグインのロード時に参照される, このインターフェースの形式ID（値: "GPCI"）です</span>
 	 * .
 	 */
-	public static final String INTERFACE_TYPE = "GPCI";
+	public static final String INTERFACE_TYPE_ID = "GPCI";
 
 	/**
 	 * <span class="lang-en">The generation of this interface (value: "1")</span>

@@ -35,11 +35,11 @@ public class ConnectorImplementationLoader {
 	private static final String[] DEFAULT_LOADING_PATHS = { "." };
 
 	/**
-	 * <span class="lang-en">The name of the field declaring the type name of the interface</span>
-	 * <span class="lang-ja">インターフェースの形式名が宣言されているフィールドの名称です</span>
+	 * <span class="lang-en">The name of the field declaring the type ID of the interface</span>
+	 * <span class="lang-ja">インターフェースの形式IDが宣言されているフィールドの名称です</span>
 	 * .
 	 */
-	private static final String INTERFACE_TYPE_FIELD_NAME = "INTERFACE_TYPE";
+	private static final String INTERFACE_TYPE_ID_FIELD_NAME = "INTERFACE_TYPE_ID";
 
 	/**
 	 * <span class="lang-en">The name of the field declaring the generation of the interface</span>
@@ -196,28 +196,28 @@ public class ConnectorImplementationLoader {
 			);
 		}
 
-		String interfaceType = null;
+		String interfaceTypeId = null;
 		String interfaceGeneration = null;
 		try {
-			Field interfaceTypeField = connectorImplClass.getField(INTERFACE_TYPE_FIELD_NAME);
+			Field interfaceTypeIdField = connectorImplClass.getField(INTERFACE_TYPE_ID_FIELD_NAME);
 			Field interfaceVersionField = connectorImplClass.getField(INTERFACE_GENERATION_FIELD_NAME);
-			interfaceType = interfaceTypeField.get(null).toString();
+			interfaceTypeId = interfaceTypeIdField.get(null).toString();
 			interfaceGeneration = interfaceVersionField.get(null).toString();
 
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 
 			if (connectorImplInstance instanceof GeneralProcessConnectorInterface2) {
-				interfaceType = "GPCI";
+				interfaceTypeId = "GPCI";
 				interfaceGeneration = "2";
 			} else if (connectorImplInstance instanceof GeneralProcessConnectorInterface1) {
-				interfaceType = "GPCI";
+				interfaceTypeId = "GPCI";
 				interfaceGeneration = "1";
 			} else {
 				if (this.interfaceFilterEnabled) {
 					throw new ConnectorException(
 						"Invalid implementation (unknown interface): "
 						+ connectorImplementationName
-						+ " (interface-type: " + interfaceType + ", "
+						+ " (interface-type-id: " + interfaceTypeId + ", "
 						+ "interface-generation: " + interfaceGeneration + ")", e
 					);
 				}
@@ -225,7 +225,7 @@ public class ConnectorImplementationLoader {
 		}
 
 		ConnectorImplementationContainer container = new ConnectorImplementationContainer(
-			connectorImplInstance, interfaceType, interfaceGeneration
+			connectorImplInstance, interfaceTypeId, interfaceGeneration
 		);
 
 		this.checkImplementation(container, connectorImplementationName);
@@ -254,14 +254,14 @@ public class ConnectorImplementationLoader {
 			ConnectorImplementationContainer container, String connectorImplementationName)
 					throws ConnectorException {
 
-		String interfaceType = container.getInterfaceType();
+		String interfaceTypeId = container.getInterfaceTypeId();
 		String interfaceGeneration = container.getInterfaceGeneration();
-		if (interfaceType == null) {
+		if (interfaceTypeId == null) {
 			if (!this.interfaceFilterEnabled) {
 				return;
 			}
 			throw new ConnectorException(
-				"Invalid implementation (null interface-type): " + connectorImplementationName
+				"Invalid implementation (null interface-type-id): " + connectorImplementationName
 			);
 		}
 		if (interfaceGeneration == null) {
@@ -271,7 +271,7 @@ public class ConnectorImplementationLoader {
 		}
 
 		Object implementation = container.getConnectorImplementation();
-		String interfaceCode = container.getInterfaceType() + container.getInterfaceGeneration();
+		String interfaceCode = container.getInterfaceTypeId() + container.getInterfaceGeneration();
 
 		switch (interfaceCode) {
 
@@ -335,7 +335,7 @@ public class ConnectorImplementationLoader {
 					throw new ConnectorException(
 						"Invalid implementation (unsupported interface): "
 						+ connectorImplementationName
-						+ " (interface-type: " + interfaceType + ", "
+						+ " (interface-type-id: " + interfaceTypeId + ", "
 						+ "interface-generation: " + interfaceGeneration + ")"
 					);
 				}
