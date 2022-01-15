@@ -1,6 +1,9 @@
 /*
  * ==================================================
  * Connector Implementation Container
+ * 
+ * Online Reference: https://www.vcssl.org/en-us/plugin/jimpl/ref/org/vcssl/connect/ConnectorImplementationContainer.html
+ * オンライン仕様書: https://www.vcssl.org/ja-jp/plugin/jimpl/ref/org/vcssl/connect/ConnectorImplementationContainer.html
  * --------------------------------------------------
  * This file is released under CC0.
  * Written in 2019-2022 by RINEARN (Fumihiro Matsui)

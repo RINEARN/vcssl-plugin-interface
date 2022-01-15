@@ -1,7 +1,9 @@
 /*
  * ================================================================
  * Scalar Data Accessor Interface 1 (SDAI 1) for Int64 Type Data
- * ( for VCSSL / Vnano Plug-in Development )
+ * 
+ * Online Reference: https://www.vcssl.org/en-us/plugin/jimpl/ref/org/vcssl/connect/Int64ScalarDataAccessorInterface1.html
+ * オンライン仕様書: https://www.vcssl.org/ja-jp/plugin/jimpl/ref/org/vcssl/connect/Int64ScalarDataAccessorInterface1.html
  * ----------------------------------------------------------------
  * This file is released under CC0.
  * Written in 2020-2022 by RINEARN (Fumihiro Matsui)

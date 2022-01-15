@@ -1,7 +1,9 @@
 /*
  * ==================================================
  * External Variable Connector Interface 1 (XVCI 1)
- * ( for VCSSL / Vnano Plug-in Development )
+ * 
+ * Online Reference: https://www.vcssl.org/en-us/plugin/jimpl/ref/org/vcssl/connect/ExternalVariableConnectorInterface1.html
+ * オンライン仕様書: https://www.vcssl.org/ja-jp/plugin/jimpl/ref/org/vcssl/connect/ExternalVariableConnectorInterface1.html
  * --------------------------------------------------
  * This file is released under CC0.
  * Written in 2017-2022 by RINEARN (Fumihiro Matsui)

@@ -1,7 +1,9 @@
 /*
  * ==================================================
  * External Struct Connector Interface 1 (XSCI 1)
- * ( for VCSSL / Vnano Plug-in Development )
+ * 
+ * Online Reference: https://www.vcssl.org/en-us/plugin/jimpl/ref/org/vcssl/connect/ExternalStructConnectorInterface1.html
+ * オンライン仕様書: https://www.vcssl.org/ja-jp/plugin/jimpl/ref/org/vcssl/connect/ExternalStructConnectorInterface1.html
  * --------------------------------------------------
  * This file is released under CC0.
  * Written in 2021-2022 by RINEARN (Fumihiro Matsui)
