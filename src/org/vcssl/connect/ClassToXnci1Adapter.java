@@ -1,6 +1,9 @@
 /*
  * ==================================================
  * Class to XLCI Plug-in Adapter
+ * 
+ * Online Reference: https://www.vcssl.org/en-us/plugin/jimpl/ref/org/vcssl/connect/ClassToXnci1Adapter.html
+ * オンライン仕様書: https://www.vcssl.org/ja-jp/plugin/jimpl/ref/org/vcssl/connect/ClassToXnci1Adapter.html
  * --------------------------------------------------
  * This file is released under CC0.
  * Written in 2019-2022 by RINEARN (Fumihiro Matsui)
