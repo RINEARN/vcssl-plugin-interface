@@ -137,5 +137,5 @@ public interface EngineConnectorInterface1 {
 	 *     <span class="lang-en">The specified type of engine connector</span>
 	 *     <span class="lang-ja">指定された種類のエンジンコネクター</span>
 	 */
-	public abstract Object getOtherEngineConnector(Class<?> engineConnectorClass);
+	public abstract <T> T getOtherEngineConnector(Class<T> engineConnectorClass);
 }
