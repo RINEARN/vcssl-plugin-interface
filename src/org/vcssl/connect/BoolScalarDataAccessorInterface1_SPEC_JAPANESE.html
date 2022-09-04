@@ -27,7 +27,7 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 </div>
 
 
-<h1>Bool Scalar Data Accessor Interface 1 (Bool SDAI1)<br />インターフェース仕様書<br /><span class="spec-path">(org.vcssl.connect.ArrayDataAccessorInterface1)</span></h1>
+<h1>Bool Scalar Data Accessor Interface 1 (Bool SDAI1)<br />インターフェース仕様書<br /><span class="spec-path">(org.vcssl.connect.BoolScalarDataAccessorInterface1)</span></h1>
 
 <hr />
 
@@ -87,12 +87,12 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 			boolean 型のスカラ値を設定します。
 		</dd>
 
-	<dt><a href="#getBoolScalarData">void getBoolScalarData()</a></dt>
+	<dt><a href="#getBoolScalarData">boolean getBoolScalarData()</a></dt>
 		<dd>
 			boolean 型のスカラ値を取得します。
 		</dd>
 
-	<dt><a href="#hasBoolScalarData">void hasBoolScalarData()</a></dt>
+	<dt><a href="#hasBoolScalarData">boolean hasBoolScalarData()</a></dt>
 		<dd>
 			boolean 型のスカラ値を取得可能かどうかを判定します。
 		</dd>
@@ -157,7 +157,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public void setBoolScalarData(boolean data)</td>
+		<td class="rcol">void setBoolScalarData(boolean data)</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -183,7 +183,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public boolean getBoolScalarData()</td>
+		<td class="rcol">boolean getBoolScalarData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -207,7 +207,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public boolean hasBoolScalarData()</td>
+		<td class="rcol">boolean hasBoolScalarData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>

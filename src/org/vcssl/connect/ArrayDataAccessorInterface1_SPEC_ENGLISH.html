@@ -64,7 +64,7 @@ You can use this interface for development of plug-ins of applications equipped 
 <h2>License</h2>
 
 <p>
-This interface is published under CC0, which is almost the same as the so-called "copyright-free" (public domain).
+This interface is published under CC0, which is almost the same as the so-called "copyright-free" (domain).
 </p>
 
 
@@ -112,7 +112,7 @@ This interface is published under CC0, which is almost the same as the so-called
 			Returns the serialized 1D array data.
 		</dd>
 
-	<dt><a href="#hasArrayData">void hasArrayData()</a></dt>
+	<dt><a href="#hasArrayData">boolean hasArrayData()</a></dt>
 		<dd>
 			Returns whether any serialized 1D array data can be gotten
 		</dd>
@@ -262,7 +262,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public void setArrayData(T data, int offset, int[] lengths)</td>
+		<td class="rcol">void setArrayData(T data, int offset, int[] lengths)</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
@@ -375,7 +375,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public T getArrayData()</td>
+		<td class="rcol">T getArrayData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
@@ -405,7 +405,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public boolean hasArrayData()</td>
+		<td class="rcol">boolean hasArrayData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
@@ -432,7 +432,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public int getArrayOffset()</td>
+		<td class="rcol">int getArrayOffset()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
@@ -460,7 +460,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public int[] getArrayLengths()</td>
+		<td class="rcol">int[] getArrayLengths()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
@@ -487,7 +487,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public int getArraySize()</td>
+		<td class="rcol">int getArraySize()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
@@ -520,7 +520,7 @@ In this document, we describe the type parameter as "T".
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">public int getArrayRank()</td>
+		<td class="rcol">int getArrayRank()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>

@@ -111,7 +111,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 			1次元に直列化された配列データを取得します。
 		</dd>
 
-	<dt><a href="#hasArrayData">void hasArrayData()</a></dt>
+	<dt><a href="#hasArrayData">boolean hasArrayData()</a></dt>
 		<dd>
 			1次元に直列化された配列データを取得可能かどうかを判定します。
 		</dd>
@@ -261,7 +261,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public void setArrayData(T data, int offset, int[] lengths)</td>
+		<td class="rcol">void setArrayData(T data, int offset, int[] lengths)</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -363,7 +363,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public T getArrayData()</td>
+		<td class="rcol">T getArrayData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -393,7 +393,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public boolean hasArrayData()</td>
+		<td class="rcol">boolean hasArrayData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -420,7 +420,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public int getArrayOffset()</td>
+		<td class="rcol">int getArrayOffset()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -449,7 +449,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public int[] getArrayLengths()</td>
+		<td class="rcol">int[] getArrayLengths()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -477,7 +477,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public int getArraySize()</td>
+		<td class="rcol">int getArraySize()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
@@ -509,7 +509,7 @@ Array Data Accessor Interface 1 (ADAI1) は、主に処理系のデータコン�
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">public int getArrayRank()</td>
+		<td class="rcol">int getArrayRank()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
