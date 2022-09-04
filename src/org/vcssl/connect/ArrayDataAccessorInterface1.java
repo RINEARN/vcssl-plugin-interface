@@ -13,11 +13,11 @@
 package org.vcssl.connect;
 
 /**
- * A data-I/O interface (abbreviated as ADAI 1), mainly implemented by data container objects of language processor systems.
+ * A data-I/O interface (abbreviated as ADAI1), mainly implemented by data container objects of language processor systems.
  *
  * In this org.vcssl.connect package, multiple data I/O interfaces are provided for passing/receiving data 
  * without any data-conversions, between script-engine-side and plug-in-side, if required.
- * In them, this interface ADAI 1 provides I/O methods of multi-dimensional array data.
+ * In them, this interface ADAI1 provides I/O methods of multi-dimensional array data.
  * 
  * @param <T> The type of data stored in the data container implementing this interface.
  */
