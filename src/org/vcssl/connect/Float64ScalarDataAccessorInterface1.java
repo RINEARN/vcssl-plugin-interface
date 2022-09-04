@@ -47,7 +47,7 @@ public interface Float64ScalarDataAccessorInterface1 {
 
 
 	/**
-	 * Returns whether any double-type scalar value can be gotten or not.
+	 * Returns whether any double-type scalar value can be gotten.
 	 * 
 	 * @return Returns true if any double-type scalar value can be gotton.
 	 */
