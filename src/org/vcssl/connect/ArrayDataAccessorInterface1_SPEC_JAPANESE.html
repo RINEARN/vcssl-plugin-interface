@@ -22,6 +22,11 @@
 
 
 
+<div style="text-align: center; width: 100%; border: 1px solid #000000; background-color: #eeeeff;">
+VCSSL/Vnano プラグイン インターフェース 仕様書
+</div>
+
+
 <h1>Array Data Accessor Interface 1 (ADAI1)<br />インターフェース仕様書<br /><span class="spec-path">(org.vcssl.connect.ArrayDataAccessorInterface1)</span></h1>
 
 <hr />
@@ -31,7 +36,7 @@
 <h2>概要</h2>
 
 <p>
-主に処理系のデータコンテナが実装してサポートする、データ入出力インターフェースの一つ（略称 ADAI 1）です。
+Array Data Accessor Interface 1 (ADAI 1) は、主に処理系のデータコンテナが実装してサポートする、データ入出力インターフェースの一つです。
 </p>
 
 <p>
@@ -96,22 +101,22 @@
 
 	<dt><a href="#setArrayData">void setArrayData(T data, int offset, int[] lengths)</a></dt>
 		<dd>
-			配列データを、そのデータに関する必須情報と共に設定します。
+			1次元に直列化された配列データを、そのデータに関する必須情報と共に設定します。
 		</dd>
 
 	<dt><a href="#getArrayData">T getArrayData()</a></dt>
 		<dd>
-			配列データを取得します。
+			1次元に直列化された配列データを取得します。
 		</dd>
 
 	<dt><a href="#hasArrayData">void hasArrayData()</a></dt>
 		<dd>
-			配列データを取得可能かどうかを判定します。
+			1次元に直列化された配列データを取得可能かどうかを判定します。
 		</dd>
 
 	<dt><a href="#getArrayOffset">int getArrayOffset()</a></dt>
 		<dd>
-			配列データの中で、スカラ値が格納されているインデックスを返します。
+			1次元に直列化された配列データの中で、スカラ値が格納されているインデックスを返します。
 		</dd>
 
 	<dt><a href="#getArrayLengths">int[] getArrayLengths()</a></dt>
@@ -121,7 +126,7 @@
 
 	<dt><a href="#getArraySize">int getArraySize()</a></dt>
 		<dd>
-			直列化された 1 次元配列としての、データのサイズ（長さ）を返します。
+			1次元に直列化された直列化された配列としての、データのサイズ（長さ）を返します。
 		</dd>
 
 	<dt><a href="#getArrayRank">int getArrayRank()</a></dt>
@@ -261,7 +266,7 @@
 		<td class="rcol">
 			
 			<p style="margin-top: 0px;">
-			配列データを、そのデータに関する必須情報と共に設定します。
+			1次元に直列化された配列データを、そのデータに関する必須情報と共に設定します。
 			</p>
 			
 			<p>
@@ -311,7 +316,6 @@
 			
 			<div class="lang-ja" style="border: 1px solid #000000; margin: 5px; padding: 3px;">
 			    (長さが [N1][N2][N3][N4] の 4 次元配列の場合)
-			    (The case of 4D array, of which lengths are [N1][N2][N3][N4])
 			    <br>
 			    <span style="margin-left: 30px;">data[ 直列化されたインデックス ] = 4次元配列[ 1次元目のインデックス ][ 2次元目のインデックス ][ 3次元目のインデックス ][ 4次元目のインデックス ]</span>
 			    <br>
@@ -362,9 +366,8 @@
 	<tr>
 		<td class="lcol">機能</td>
 		<td class="rcol">
-			配列データを取得します。
+			1次元に直列化された配列データを取得します。
 			<br />
-			戻り値は常に（直列化された） 1 次元配列です。
 			スカラ値や多次元配列データの格納のされ方については、
 			<a href="#setArrayData">setArrayData</a> メソッドの説明を参照してください。
 		</td>
@@ -393,7 +396,7 @@
 	<tr>
 		<td class="lcol">機能</td>
 		<td class="rcol">
-			配列データを取得可能かどうかを判定します。
+			1次元に直列化された配列データを取得可能かどうかを判定します。
 		</td>
 	</tr>
 	<tr>
@@ -420,7 +423,7 @@
 	<tr>
 		<td class="lcol">機能</td>
 		<td class="rcol">
-			配列データの中で、スカラ値が格納されているインデックスを返します。
+			1次元に直列化された配列データの中で、スカラ値が格納されているインデックスを返します。
 			詳細は、
 			<a href="#setArrayData">setArrayData</a> メソッドの引数 offset に関する説明を参照してください。
 		</td>
@@ -477,7 +480,7 @@
 	<tr>
 		<td class="lcol">機能</td>
 		<td class="rcol">
-			直列化された1次元配列としての、データのサイズ（長さ）を返します。
+			1次元に直列化された配列としての、データのサイズ（長さ）を返します。
 			<br />
 			データがスカラ値の場合、サイズは常に 1 となります。
 			<br />
