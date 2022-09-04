@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Float64 SDAI1 Specification</title>
+	<title>Int64 SDAI1 Specification</title>
 	<meta charset="UTF-8">
 	<style type="text/css">
 		h1 .spec-path { font-size: 70%; }
@@ -25,7 +25,7 @@ VCSSL/VNANO PLUGIN INTERFACE SPECIFICATION
 </div>
 
 
-<h1>Float64 Scalar Data Accessor Interface 1 (Float64 SDAI1)<br />Specification Document<br /><span class="spec-path">(org.vcssl.connect.Float64ScalarDataAccessorInterface1)</span></h1>
+<h1>Int64 Scalar Data Accessor Interface 1 (Int64 SDAI1)<br />Specification Document<br /><span class="spec-path">(org.vcssl.connect.Int64ScalarDataAccessorInterface1)</span></h1>
 
 <hr />
 
@@ -34,7 +34,7 @@ VCSSL/VNANO PLUGIN INTERFACE SPECIFICATION
 <h2>Abstract</h2>
 
 <p>
-Float64 Scalar Data Accessor Interface 1 (Float64 SDAI1) is a data-I/O interface, mainly implemented by data container objects of language processor systems.
+Int64 Scalar Data Accessor Interface 1 (Int64 SDAI1) is a data-I/O interface, mainly implemented by data container objects of language processor systems.
 </p>
 
 <p>
@@ -43,7 +43,7 @@ without any data-conversions, between script-engine-side and plug-in-side, if re
 </p>
 
 <p>
-In them, this interface Float64 SDAI1 provides I/O methods of a double-type (64-bit floating point number type) scalar value.
+In them, this interface Int64 SDAI1 provides I/O methods of a long-type (64-bit integer type) scalar value.
 </p>
 
 
@@ -74,7 +74,7 @@ This interface is published under CC0, which is almost the same as the so-called
 
 	<dt><a href="#INTERFACE_TYPE_ID">INTERFACE_TYPE_ID</a></dt>
 		<dd>
-			The type ID of this interface (value: "FLOAT64_SDAI") referred when the plug-in will be loaded.
+			The type ID of this interface (value: "INT64_SDAI") referred when the plug-in will be loaded.
 		</dd>
 
 	<dt><a href="#INTERFACE_GENERATION">INTERFACE_GENERATION</a></dt>
@@ -82,19 +82,19 @@ This interface is published under CC0, which is almost the same as the so-called
 			The generation of this interface (value: "1").
 		</dd>
 
-	<dt><a href="#setFloat64ScalarData">void setFloat64ScalarData(double data)</a></dt>
+	<dt><a href="#setInt64ScalarData">void setInt64ScalarData(long data)</a></dt>
 		<dd>
-			Sets the double-type scalar value.
+			Sets the long-type scalar value.
 		</dd>
 
-	<dt><a href="#getFloat64ScalarData">double getFloat64ScalarData()</a></dt>
+	<dt><a href="#getInt64ScalarData">long getInt64ScalarData()</a></dt>
 		<dd>
-			Gets the double-type scalar value.
+			Gets the long-type scalar value.
 		</dd>
 
-	<dt><a href="#hasFloat64ScalarData">boolean hasFloat64ScalarData()</a></dt>
+	<dt><a href="#hasInt64ScalarData">boolean hasInt64ScalarData()</a></dt>
 		<dd>
-			Returns whether any double-type scalar value can be gotten.
+			Returns whether any long-type scalar value can be gotten.
 		</dd>
 
 </dl>
@@ -115,7 +115,7 @@ This interface is published under CC0, which is almost the same as the so-called
 	</tr>
 	<tr>
 		<td class="lcol">Value</td>
-		<td class="rcol">The type ID of this interface (value: "FLOAT64_SDAI") referred when the plug-in will be loaded.</td>
+		<td class="rcol">The type ID of this interface (value: "INT64_SDAI") referred when the plug-in will be loaded.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Type</td>
@@ -148,18 +148,18 @@ This interface is published under CC0, which is almost the same as the so-called
 <h2>Methods</h2>
 
 
-<table id="setFloat64ScalarData" class="spec-table">
+<table id="setInt64ScalarData" class="spec-table">
 	<tr>
 		<td class="lcol">Name</td>
-		<th class="rcol">setFloat64ScalarData</th>
+		<th class="rcol">setInt64ScalarData</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">void setFloat64ScalarData(double data)</td>
+		<td class="rcol">void setInt64ScalarData(long data)</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
-		<td class="rcol">Sets the double-type scalar value.</td>
+		<td class="rcol">Sets the long-type scalar value.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Parameters</td>
@@ -172,18 +172,18 @@ This interface is published under CC0, which is almost the same as the so-called
 </table>
 
 
-<table id="getFloat64ScalarData" class="spec-table">
+<table id="getInt64ScalarData" class="spec-table">
 	<tr>
 		<td class="lcol">Name</td>
-		<th class="rcol">getFloat64ScalarData</th>
+		<th class="rcol">getInt64ScalarData</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">double getFloat64ScalarData()</td>
+		<td class="rcol">long getInt64ScalarData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
-		<td class="rcol">Gets the double-type scalar value.</td>
+		<td class="rcol">Gets the long-type scalar value.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Parameters</td>
@@ -196,18 +196,18 @@ This interface is published under CC0, which is almost the same as the so-called
 </table>
 
 
-<table id="hasFloat64ScalarData" class="spec-table">
+<table id="hasInt64ScalarData" class="spec-table">
 	<tr>
 		<td class="lcol">Name</td>
-		<th class="rcol">hasFloat64ScalarData</th>
+		<th class="rcol">hasInt64ScalarData</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">boolean hasFloat64ScalarData()</td>
+		<td class="rcol">boolean hasInt64ScalarData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
-		<td class="rcol">Returns whether any double-type scalar value can be gotten.</td>
+		<td class="rcol">Returns whether any long-type scalar value can be gotten.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Parameters</td>
@@ -215,7 +215,7 @@ This interface is published under CC0, which is almost the same as the so-called
 	</tr>
 	<tr>
 		<td class="lcol">Return</td>
-		<td class="rcol">Returns true if any double-type scalar value can be gotton.</td>
+		<td class="rcol">Returns true if any long-type scalar value can be gotton.</td>
 	</tr>
 </table>
 
