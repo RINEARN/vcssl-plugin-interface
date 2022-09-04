@@ -7,6 +7,9 @@
  * ================================================================
  */
 
+// THE SPECIFICATION OF THIS INTERFACE HAD BEEN FINALIZED AT 2022/08/31.
+// NO MODIFICATIONS WILL BE APPLIED FOR THIS INTERFACE, EXCLUDING DOCUMENTS/COMMENTS.
+
 package org.vcssl.connect;
 
 /**

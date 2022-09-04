@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <head>
-	<title>Bool SDAI1 仕様書</title>
+	<title>Float64 SDAI1 仕様書</title>
 	<meta charset="UTF-8">
 	<style type="text/css">
 		h1 .spec-path { font-size: 70%; }
@@ -27,7 +27,7 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 </div>
 
 
-<h1>Bool Scalar Data Accessor Interface 1 (Bool SDAI1)<br />インターフェース仕様書<br /><span class="spec-path">(org.vcssl.connect.BoolScalarDataAccessorInterface1)</span></h1>
+<h1>Float64 Scalar Data Accessor Interface 1 (Float64 SDAI1)<br />インターフェース仕様書<br /><span class="spec-path">(org.vcssl.connect.Float64ScalarDataAccessorInterface1)</span></h1>
 
 <hr />
 
@@ -36,7 +36,7 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 <h2>概要</h2>
 
 <p>
-Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
+Float64 Scalar Data Accessor Interface 1 (Float64 SDAI1) は、
 主に処理系のデータコンテナが実装してサポートする、データ入出力インターフェースの一つです。
 </p>
 
@@ -46,7 +46,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 </p>
 
 <p>
-その中でこの Bool SDAI1 は、boolean 型のスカラ値に対する入出力機能を提供します。
+その中でこの Float64 SDAI1 は、64bit浮動小数点数である double 型のスカラ値に対する入出力機能を提供します。
 </p>
 
 
@@ -74,7 +74,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 
 	<dt><a href="#INTERFACE_TYPE_ID">INTERFACE_TYPE_ID</a></dt>
 		<dd>
-			プラグインのロード時に参照される、このインターフェースの形式ID（値: "BOOL_SDAI"）です。
+			プラグインのロード時に参照される、このインターフェースの形式ID（値: "FLOAT64_SDAI"）です。
 		</dd>
 
 	<dt><a href="#INTERFACE_GENERATION">INTERFACE_GENERATION</a></dt>
@@ -82,19 +82,19 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 			このインターフェースの世代名です（値: "1"）。
 		</dd>
 
-	<dt><a href="#setBoolScalarData">void setBoolScalarData(boolean data)</a></dt>
+	<dt><a href="#setFloat64ScalarData">void setFloat64ScalarData(double data)</a></dt>
 		<dd>
-			boolean 型のスカラ値を設定します。
+			double 型のスカラ値を設定します。
 		</dd>
 
-	<dt><a href="#getBoolScalarData">boolean getBoolScalarData()</a></dt>
+	<dt><a href="#getFloat64ScalarData">double getFloat64ScalarData()</a></dt>
 		<dd>
-			boolean 型のスカラ値を取得します。
+			double 型のスカラ値を取得します。
 		</dd>
 
-	<dt><a href="#hasBoolScalarData">boolean hasBoolScalarData()</a></dt>
+	<dt><a href="#hasFloat64ScalarData">boolean hasFloat64ScalarData()</a></dt>
 		<dd>
-			boolean 型のスカラ値を取得可能かどうかを判定します。
+			double 型のスカラ値を取得可能かどうかを判定します。
 		</dd>
 
 </dl>
@@ -116,7 +116,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 	</tr>
 	<tr>
 		<td class="lcol">値の意味</td>
-		<td class="rcol">プラグインのロード時に参照される、このインターフェースの形式ID（値: "BOOL_SDAI"）です。</td>
+		<td class="rcol">プラグインのロード時に参照される、このインターフェースの形式ID（値: "FLOAT64_SDAI"）です。</td>
 	</tr>
 	<tr>
 		<td class="lcol">データ型</td>
@@ -150,18 +150,18 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 
 
 
-<table id="setBoolScalarData" class="spec-table">
+<table id="setFloat64ScalarData" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">setBoolScalarData</th>
+		<th class="rcol">setFloat64ScalarData</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">void setBoolScalarData(boolean data)</td>
+		<td class="rcol">void setFloat64ScalarData(double data)</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">boolean 型のスカラ値を設定します。</td>
+		<td class="rcol">double 型のスカラ値を設定します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -176,18 +176,18 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 
 
 
-<table id="getBoolScalarData" class="spec-table">
+<table id="getFloat64ScalarData" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">getBoolScalarData</th>
+		<th class="rcol">getFloat64ScalarData</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">boolean getBoolScalarData()</td>
+		<td class="rcol">double getFloat64ScalarData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">boolean 型のスカラ値を取得します。</td>
+		<td class="rcol">double 型のスカラ値を取得します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -200,18 +200,18 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 </table>
 
 
-<table id="hasBoolScalarData" class="spec-table">
+<table id="hasFloat64ScalarData" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">hasBoolScalarData</th>
+		<th class="rcol">hasFloat64ScalarData</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">boolean hasBoolScalarData()</td>
+		<td class="rcol">boolean hasFloat64ScalarData()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">boolean 型のスカラ値を取得可能かどうかを判定します。</td>
+		<td class="rcol">double 型のスカラ値を取得可能かどうかを判定します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -219,7 +219,7 @@ Bool Scalar Data Accessor Interface 1 (Bool SDAI1) は、
 	</tr>
 	<tr>
 		<td class="lcol">戻り値</td>
-		<td class="rcol">boolean 型のスカラ値を取得可能であれば true が返されます。</td>
+		<td class="rcol">double 型のスカラ値を取得可能であれば true が返されます。</td>
 	</tr>
 </table>
 
