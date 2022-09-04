@@ -22,6 +22,7 @@ package org.vcssl.connect;
  */
 public interface BoolScalarDataAccessorInterface1 {
 
+
 	/** The type ID of this interface (value: "BOOL_SDAI") referred when the plug-in will be loaded. */
 	public static final String INTERFACE_TYPE_ID = "BOOL_SDAI";
 
