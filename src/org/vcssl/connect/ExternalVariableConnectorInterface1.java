@@ -173,7 +173,7 @@ public interface ExternalVariableConnectorInterface1 {
 	 * {@link finalizeForTermination(Object)}, {@link finalizeForDisconnection(Object)} methods.
 	 * 
 	 * What type of interfaces are available depend on the implementation of the scripting engine, but at least, 
-	 * {@link EngineConnectorInterface1 ECI 1} is guaranteed to be available by the specification of XVCI 1.
+	 * {@link EngineConnectorInterface1 ECI1} is guaranteed to be available by the specification of XVCI1.
 	 * 
 	 * @return The Class representing the interface/class for communicating with the scripting engine.
 	 */
