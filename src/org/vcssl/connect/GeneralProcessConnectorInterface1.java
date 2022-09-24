@@ -10,7 +10,7 @@
 package org.vcssl.connect;
 
 /**
- * An legacy interface for developing function plug-ins, supported by only the scripting engine of VCSSL.
+ * An legacy interface for implementing function plug-ins, supported by only the scripting engine of VCSSL.
  */
 public interface GeneralProcessConnectorInterface1 {
 
