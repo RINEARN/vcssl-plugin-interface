@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <head>
-	<title>ConnectorFatalException 仕様書</title>
+	<title>ConnectorException 仕様書</title>
 	<meta charset="UTF-8">
 	<style type="text/css">
 		h1 .spec-path { font-size: 70%; }
@@ -27,7 +27,7 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 </div>
 
 
-<h1>ConnectorFatalException<br />クラス仕様書<br /><span class="spec-path">(org.vcssl.connect.ConnectorFatalException)</span></h1>
+<h1>ConnectorException<br />クラス仕様書<br /><span class="spec-path">(org.vcssl.connect.ConnectorException)</span></h1>
 
 <hr />
 
@@ -36,14 +36,19 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 <h2>概要</h2>
 
 <p>
-プラグインやスクリプトエンジンにおける、
-実装上の問題に起因する（バグの可能性がある）エラーが生じた際に、スローされる非検査例外です。
+プラグインにおいて、実行時に生じた問題を、処理系側に通知するための検査例外です。
 </p>
 
 <p>
-両者の実装が正しくても生じ得る、通常想定すべき問題に対しては、この例外の代わりに、検査例外である 
-<a href="ConnectorException_SPEC_JAPANESE.html">ConnectorException</a> をスローしてください。
+この例外は、例えばファイルへのアクセス失敗時など、
+問題が「プラグインやスクリプトエンジンの実装が正しくても生じ得る」場合にスローしてください。
 </p>
+
+<p>
+両者の実装が正しければ生じない（つまりバグの可能性が高い）問題に対しては、この例外の代わりに、非検査例外である 
+<a href="ConnectorFatalException_SPEC_JAPANESE.html">ConnectorFatalException</a> をスローしてください。
+</p>
+
 
 
 <h2>ステータス</h2>
@@ -74,24 +79,24 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 
 <dl class="spec-dl">
 
-	<dt><a href="#ConnectorFatalException1">ConnectorFatalException()</a></dt>
+	<dt><a href="#ConnectorException1">ConnectorException()</a></dt>
 		<dd>
-			エラーメッセージを持たない ConnectorFatalException を生成します。
+			エラーメッセージを持たない ConnectorException を生成します。
 		</dd>
 
-	<dt><a href="#ConnectorFatalException2">ConnectorFatalException(String errorMessage)</a></dt>
+	<dt><a href="#ConnectorException2">ConnectorException(String errorMessage)</a></dt>
 		<dd>
-			指定されたエラーメッセージを持つ ConnectorFatalException を生成します。
+			指定されたエラーメッセージを持つ ConnectorException を生成します。
 		</dd>
 
-	<dt><a href="#ConnectorFatalException3">ConnectorFatalException(Throwable wrappedThrowable)</a></dt>
+	<dt><a href="#ConnectorFatalException3">ConnectorException(Throwable wrappedThrowable)</a></dt>
 		<dd>
-			原因情報を保持する、指定された Throwable をラップする ConnectorFatalException を生成します。
+			原因情報を保持する、指定された Throwable をラップする ConnectorException を生成します。
 		</dd>
 
-	<dt><a href="#ConnectorFatalException4">ConnectorFatalException(String errorMessage, Throwable wrappedThrowable)</a></dt>
+	<dt><a href="#ConnectorFatalException4">ConnectorException(String errorMessage, Throwable wrappedThrowable)</a></dt>
 		<dd>
-			指定されたエラーメッセージを持ち、指定された Throwable（原因情報を保持）をラップする ConnectorFatalException を生成します。
+			指定されたエラーメッセージを持ち、指定された Throwable（原因情報を保持）をラップする ConnectorException を生成します。
 		</dd>
 
 </dl>
@@ -106,18 +111,18 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 
 <h2>コンストラクタ</h2>
 
-<table id="ConnectorFatalException1" class="spec-table">
+<table id="ConnectorException1" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">ConnectorFatalException()</td>
+		<td class="rcol">ConnectorException()</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">エラーメッセージを持たない ConnectorFatalException を生成します。</td>
+		<td class="rcol">エラーメッセージを持たない ConnectorException を生成します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -125,23 +130,23 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 	</tr>
 	<tr>
 		<td class="lcol">戻り値</td>
-		<td class="rcol">生成された ConnectorFatalException インスタンス。</td>
+		<td class="rcol">生成された ConnectorException インスタンス。</td>
 	</tr>
 </table>
 
 
-<table id="ConnectorFatalException2" class="spec-table">
+<table id="ConnectorException2" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">ConnectorFatalException(String errorMessage)</td>
+		<td class="rcol">ConnectorException(String errorMessage)</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">指定されたエラーメッセージを持つ ConnectorFatalException を生成します。</td>
+		<td class="rcol">指定されたエラーメッセージを持つ ConnectorException を生成します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -149,23 +154,23 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 	</tr>
 	<tr>
 		<td class="lcol">戻り値</td>
-		<td class="rcol">生成された ConnectorFatalException インスタンス。</td>
+		<td class="rcol">生成された ConnectorException インスタンス。</td>
 	</tr>
 </table>
 
 
-<table id="ConnectorFatalException3" class="spec-table">
+<table id="ConnectorException3" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">ConnectorFatalException(Throwable wrappedThrowable)</td>
+		<td class="rcol">ConnectorException(Throwable wrappedThrowable)</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">原因情報を保持する、指定された Throwable をラップする ConnectorFatalException を生成します。</td>
+		<td class="rcol">原因情報を保持する、指定された Throwable をラップする ConnectorException を生成します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -173,23 +178,23 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 	</tr>
 	<tr>
 		<td class="lcol">戻り値</td>
-		<td class="rcol">生成された ConnectorFatalException インスタンス。</td>
+		<td class="rcol">生成された ConnectorException インスタンス。</td>
 	</tr>
 </table>
 
 
-<table id="ConnectorFatalException4" class="spec-table">
+<table id="ConnectorException4" class="spec-table">
 	<tr>
 		<th class="lcol">名前</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">宣言形式</td>
-		<td class="rcol">ConnectorFatalException(String errorMessage, Throwable wrappedThrowable)</td>
+		<td class="rcol">ConnectorException(String errorMessage, Throwable wrappedThrowable)</td>
 	</tr>
 	<tr>
 		<td class="lcol">機能</td>
-		<td class="rcol">指定されたエラーメッセージを持ち、指定された Throwable（原因情報を保持）をラップする ConnectorFatalException を生成します。</td>
+		<td class="rcol">指定されたエラーメッセージを持ち、指定された Throwable（原因情報を保持）をラップする ConnectorException を生成します。</td>
 	</tr>
 	<tr>
 		<td class="lcol">引数</td>
@@ -201,7 +206,7 @@ VCSSL/Vnano プラグイン インターフェース 仕様書
 	</tr>
 	<tr>
 		<td class="lcol">戻り値</td>
-		<td class="rcol">生成された ConnectorFatalException インスタンス。</td>
+		<td class="rcol">生成された ConnectorException インスタンス。</td>
 	</tr>
 </table>
 
