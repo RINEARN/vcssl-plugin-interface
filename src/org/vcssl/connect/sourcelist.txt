@@ -2,6 +2,7 @@ org/vcssl/connect/ArrayDataAccessorInterface1.java
 org/vcssl/connect/BoolScalarDataAccessorInterface1.java
 org/vcssl/connect/ClassToXnci1Adapter.java
 org/vcssl/connect/ConnectorException.java
+org/vcssl/connect/ConnectorFatalException.java
 org/vcssl/connect/ConnectorImplementationContainer.java
 org/vcssl/connect/ConnectorImplementationLoader.java
 org/vcssl/connect/ConnectorPermissionName.java
