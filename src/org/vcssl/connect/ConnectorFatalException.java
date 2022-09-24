@@ -14,8 +14,12 @@ package org.vcssl.connect;
 
 
 /**
- * An Exception class thrown when errors have occurred, 
+ * An unchecked Exception class thrown when errors have occurred, 
  * caused by incorrect implementations (might be bugs) of plug-ins or scripting engines.
+ * 
+ * If the error is normally expected, 
+ * and is NOT caused by incorrect implementations (bugs and so on) of plug-ins or scripting engines,
+ * throw {@link ConnectorException} instead, which is a checked Exception.
  */
 @SuppressWarnings("serial")
 public class ConnectorFatalException extends RuntimeException {
@@ -23,7 +27,7 @@ public class ConnectorFatalException extends RuntimeException {
 	/**
 	 * Creates a ConnectorFatalException having no error message.
 	 */
-	public ConnectorFatalException() {
+	public ConnectorException() {
 		super();
 	}
 
