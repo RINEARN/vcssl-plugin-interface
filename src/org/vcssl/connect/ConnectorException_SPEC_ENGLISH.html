@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>ConnectorFatalException Specification</title>
+	<title>ConnectorException Specification</title>
 	<meta charset="UTF-8">
 	<style type="text/css">
 		h1 .spec-path { font-size: 70%; }
@@ -27,7 +27,7 @@ VCSSL/VNANO PLUGIN INTERFACE SPECIFICATION
 </div>
 
 
-<h1>ConnectorFatalException<br />Specification Document<br /><span class="spec-path">(org.vcssl.connect.ConnectorFatalException)</span></h1>
+<h1>ConnectorException<br />Specification Document<br /><span class="spec-path">(org.vcssl.connect.ConnectorException)</span></h1>
 
 <hr />
 
@@ -36,15 +36,14 @@ VCSSL/VNANO PLUGIN INTERFACE SPECIFICATION
 <h2>Abstract</h2>
 
 <p>
-ConnectorFatalException is an unchecked Exception class thrown when errors have occurred, 
-caused by incorrect implementations (might be bugs) of plug-ins or scripting engines.
+ConnectorException is a checked Exception class thrown when errors have occurred, 
+cause by expected normal problems (excluding bugs of implementations), such as an access failure to a file.
 </p>
 
 <p>
-If the error is normally expected, 
-and is NOT caused by incorrect implementations (bugs and so on) of plug-ins or scripting engines,
-throw <a href="ConnectorException_SPEC_ENGLISH.html">ConnectorException</a> instead, 
-which is a checked Exception.
+If the error is caused by incorrect implementations (bugs and so on) of plug-ins or scripting engines,
+throw <a href="ConnectorFatalException_SPEC_ENGLISH.html">ConnectorFatalException</a> instead, 
+which is an unchecked Exception.
 </p>
 
 
@@ -80,24 +79,24 @@ This class is published under CC0, which is almost the same as the so-called "co
 
 <dl class="spec-dl">
 
-	<dt><a href="#ConnectorFatalException1">ConnectorFatalException()</a></dt>
+	<dt><a href="#ConnectorException1">ConnectorException()</a></dt>
 		<dd>
-			Creates a ConnectorFatalException having no error message.
+			Creates a ConnectorException having no error message.
 		</dd>
 
-	<dt><a href="#ConnectorFatalException2">ConnectorFatalException(String errorMessage)</a></dt>
+	<dt><a href="#ConnectorException2">ConnectorException(String errorMessage)</a></dt>
 		<dd>
-			Creates a ConnectorFatalException having the specified error message.
+			Creates a ConnectorException having the specified error message.
 		</dd>
 
-	<dt><a href="#ConnectorFatalException3">ConnectorFatalException(Throwable wrappedThrowable)</a></dt>
+	<dt><a href="#ConnectorException3">ConnectorException(Throwable wrappedThrowable)</a></dt>
 		<dd>
-			Creates a ConnectorFatalException wrapping the specified Throwable.
+			Creates a ConnectorException wrapping the specified Throwable.
 		</dd>
 
-	<dt><a href="#ConnectorFatalException4">ConnectorFatalException(String errorMessage, Throwable wrappedThrowable)</a></dt>
+	<dt><a href="#ConnectorException4">ConnectorException(String errorMessage, Throwable wrappedThrowable)</a></dt>
 		<dd>
-			Creates a ConnectorFatalException having the specified error message, and wrapping the specified Throwable.
+			Creates a ConnectorException having the specified error message, and wrapping the specified Throwable.
 		</dd>
 
 </dl>
@@ -116,18 +115,18 @@ This class is published under CC0, which is almost the same as the so-called "co
 </p>
 
 
-<table id="ConnectorFatalException1" class="spec-table">
+<table id="ConnectorException1" class="spec-table">
 	<tr>
 		<th class="lcol">Name</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">ConnectorFatalException()</td>
+		<td class="rcol">ConnectorException()</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
-		<td class="rcol">Creates a ConnectorFatalException having no error message.</td>
+		<td class="rcol">Creates a ConnectorException having no error message.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Parameters</td>
@@ -135,7 +134,7 @@ This class is published under CC0, which is almost the same as the so-called "co
 	</tr>
 	<tr>
 		<td class="lcol">Return</td>
-		<td class="rcol">The created ConnectorFatalException.</td>
+		<td class="rcol">The created ConnectorException.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Exception</td>
@@ -144,18 +143,18 @@ This class is published under CC0, which is almost the same as the so-called "co
 </table>
 
 
-<table id="ConnectorFatalException2" class="spec-table">
+<table id="ConnectorException2" class="spec-table">
 	<tr>
 		<th class="lcol">Name</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">ConnectorFatalException(String errorMessage)</td>
+		<td class="rcol">ConnectorException(String errorMessage)</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
-		<td class="rcol">Creates a ConnectorFatalException having the specified error message.
+		<td class="rcol">Creates a ConnectorException having the specified error message.
 		</td>
 	</tr>
 	<tr>
@@ -164,7 +163,7 @@ This class is published under CC0, which is almost the same as the so-called "co
 	</tr>
 	<tr>
 		<td class="lcol">Return</td>
-		<td class="rcol">The created ConnectorFatalException.</td>
+		<td class="rcol">The created ConnectorException.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Exception</td>
@@ -173,27 +172,27 @@ This class is published under CC0, which is almost the same as the so-called "co
 </table>
 
 
-<table id="ConnectorFatalException3" class="spec-table">
+<table id="ConnectorException3" class="spec-table">
 	<tr>
 		<th class="lcol">Name</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">ConnectorFatalException(Throwable wrappedThrowable)</td>
+		<td class="rcol">ConnectorException(Throwable wrappedThrowable)</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
-		<td class="rcol">Creates a ConnectorFatalException having the specified error message.
+		<td class="rcol">Creates a ConnectorException having the specified error message.
 		</td>
 	</tr>
 	<tr>
 		<td class="lcol">Parameters</td>
-		<td class="rcol">wrappedThrowable: The throwable of the cause, to be wrapped by the created ConnectorFatalException.</td>
+		<td class="rcol">wrappedThrowable: The throwable of the cause, to be wrapped by the created ConnectorException.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Return</td>
-		<td class="rcol">The created ConnectorFatalException.</td>
+		<td class="rcol">The created ConnectorException.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Exception</td>
@@ -202,19 +201,19 @@ This class is published under CC0, which is almost the same as the so-called "co
 </table>
 
 
-<table id="ConnectorFatalException4" class="spec-table">
+<table id="ConnectorException4" class="spec-table">
 	<tr>
 		<th class="lcol">Name</th>
-		<th class="rcol">ConnectorFatalException</th>
+		<th class="rcol">ConnectorException</th>
 	</tr>
 	<tr>
 		<td class="lcol">Signature</td>
-		<td class="rcol">ConnectorFatalException(String errorMessage, Throwable wrappedThrowable)</td>
+		<td class="rcol">ConnectorException(String errorMessage, Throwable wrappedThrowable)</td>
 	</tr>
 	<tr>
 		<td class="lcol">Description</td>
 		<td class="rcol">
-			Creates a ConnectorFatalException having the specified error message, 
+			Creates a ConnectorException having the specified error message, 
 			and wrapping the specified Throwable.
 		</td>
 	</tr>
@@ -223,12 +222,12 @@ This class is published under CC0, which is almost the same as the so-called "co
 		<td class="rcol">
 			errorMessage: The error message.
 			<br />
-			wrappedThrowable: The throwable of the cause, to be wrapped by the created ConnectorFatalException.
+			wrappedThrowable: The throwable of the cause, to be wrapped by the created ConnectorException.
 		</td>
 	</tr>
 	<tr>
 		<td class="lcol">Return</td>
-		<td class="rcol">The created ConnectorFatalException.</td>
+		<td class="rcol">The created ConnectorException.</td>
 	</tr>
 	<tr>
 		<td class="lcol">Exception</td>
