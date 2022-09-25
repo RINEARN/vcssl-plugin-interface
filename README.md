@@ -39,6 +39,17 @@ append the file name/path of the compiled plug-in into the text file "VnanoPlugi
     ...
     MyFunctionPlugin.class
 
+## Documents
+
+You can see the documents of the interfaces on the web:
+
+* [Specification Documents in English](https://www.vcssl.org/en-us/doc/connect/)
+* [Specification Documents in Japanese](https://www.vcssl.org/ja-jp/doc/connect/)
+
+The above documents (HTML files) are also contained in this repository.
+They are located in the same place with the source files of the interfaces.
+
+
 ## Credits
 
 - Oracle and Java are registered trademarks of Oracle and/or its affiliates. 
