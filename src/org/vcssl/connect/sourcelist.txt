@@ -21,4 +21,5 @@ org/vcssl/connect/Int64ScalarDataAccessorInterface1.java
 org/vcssl/connect/MethodToXfci1Adapter.java
 org/vcssl/connect/package-info.java
 org/vcssl/connect/PermissionAuthorizerConnectorInterface1.java
+org/vcssl/connect/PermissionAuthorizerConnectorInterface2.java
 org/vcssl/connect/StringScalarDataAccessorInterface1.java
