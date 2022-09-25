@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>PACI1 Specification</title>
+	<title>PACI2 Specification</title>
 	<meta charset="UTF-8">
 	<style type="text/css">
 		h1 .spec-path { font-size: 70%; }
@@ -28,7 +28,7 @@ VCSSL/VNANO PLUGIN INTERFACE SPECIFICATION
 
 
 
-<h1>Permission Authorizer Connector Interface 1 (PACI1)<br />Specification Document<br /><span class="spec-path">(org.vcssl.connect.PermissionAuthorizerConnectorInterface1)</span></h1>
+<h1>Permission Authorizer Connector Interface 2 (PACI2)<br />Specification Document<br /><span class="spec-path">(org.vcssl.connect.PermissionAuthorizerConnectorInterface2)</span></h1>
 
 <hr />
 
@@ -37,56 +37,8 @@ VCSSL/VNANO PLUGIN INTERFACE SPECIFICATION
 <h2>Abstract</h2>
 
 <p>
-Permission Authorizer Connector Interface 1 (PACI1) is 
+Permission Authorizer Connector Interface 2 (PACI2) is 
 an interface for implementing permission-based security plug-ins.
-</p>
-
-<p>
-PACI 1 plug-ins receive requests of permissions from other plug-ins (through script engines),
-and determine whether allow or deny it (or ask to the user to determine it, if necessary).
-</p>
-
-<p>
-What form of UI is suitable for the above determination highly depends on 
-the application's UI, purpose, and so on. 
-Hence, the application-side can design UI for the above determination,
-and can connect (and use) it to script engines, by implementing this interface.
-</p>
-
-<p>
-On PACI 1, following two types of permission settings are assumed to exist:
-</p>
-
-<dl style="margin-left: 30px;">
-	<dt style="font-weight: bold;">Base permission settings:</dt>
-		<dd>
-			Settings which is set to applications/script engines explicitly, 
-			and applied automatically to each script at the beginning time of its execution.
-		</dd>
-	<dt style="font-weight: bold;">Temporary permission settings:</dt>
-		<dd>
-			Temporary settings kept only during each script is running, 
-			of which values may change by user's responses for requests of permissions.
-		</dd>
-</dl>
-
-<p>
-When the script is executed, at the beginning, values of the base permission settings 
-are copied to the temporary permission settings.
-During the script is running, values of temporary permission settings are referred 
-(and modified if necessary), when any permission is requested.
-When the next script is executed, values of the temporary permission settings
-are re-initialized by copying values of the base permission settings. 
-</p>
-
-<p>
-The reason of why the temporary permission settings exists is: to avoid repeating the same request to an user.
-For example, when the base permission for writing files is set to <a href="ConnectorPermissionValue_SPEC_ENGLISH.html#ASK">ASK</a>,
-if the temporary permission does not exist, we should ask the user to determine whether allows it or not, 
-for every time when write a line to a file (we should ask 100 times for writing 100 lines).
-It must be troublesome, so it is necessary to provide an option such as: 
-"Allow the same request automatically, during the current script is running".
-In order to implement the above feature, the temporary permission settings exists.
 </p>
 
 
@@ -94,17 +46,16 @@ In order to implement the above feature, the temporary permission settings exist
 <h2>Status</h2>
 
 <p>
-The status of this interface is "FINALIZED".
+The status of this interface is "DRAFT".
+</p>
+
+<p style="color: #ff5533;">
+Please note that: the specification of this interface may be going to be changed largely in future.
 </p>
 
 <p>
-The specification of this interface had been finalized at 2022/09/30.
-No modifications will be applied for this interface, excluding documents/comments.
-</p>
-
-<p>
-This interface is currently supported by the scripting engine of Vnano. 
-You can use this interface for development of plug-ins of applications equipped with the Vnano engine.
+This interface is not available yet on any scripting engine. 
+Instead, use <a href="PermissionAuthorizerConnectorInterface1_SPEC_ENGLISH.html">PACI1</a> at the present stage.
 </p>
 
 
@@ -127,7 +78,7 @@ This interface is published under CC0, which is almost the same as the so-called
 
 	<dt><a href="#INTERFACE_GENERATION">INTERFACE_GENERATION</a></dt>
 		<dd>
-			The generation of this interface (value: "1").
+			The generation of this interface (value: "2").
 		</dd>
 
 	<dt><a href="#setPermissionMap">void setPermissionMap(Map&lt;String, String&gt; permissionMap, boolean setsToBase)</a></dt>
@@ -143,6 +94,26 @@ This interface is published under CC0, which is almost the same as the so-called
 	<dt><a href="#requestPermission">void requestPermission(String permissionName, Object requester, Object metaInformation)</a></dt>
 		<dd>
 			Receives the request of the specified permission.
+		</dd>
+
+	<dt><a href="#setPermissionValue">void setPermissionValue(String permissionName, String value, boolean setsToBase, boolean calledByEngine)</a></dt>
+		<dd>
+			Sets the value of the specified permission item.
+		</dd>
+
+	<dt><a href="#getPermissionValue">String getPermissionValue(String permissionName, boolean getFromBase, boolean calledByEngine)</a></dt>
+		<dd>
+			Gets the value of the specified permission item.
+		</dd>
+
+	<dt><a href="#storeTemporaryPermissionValues">void storeTemporaryPermissionValues(boolean storesToBase, boolean calledByEngine)</a></dt>
+		<dd>
+			Stores current temporary permission settings.
+		</dd>
+
+	<dt><a href="#restoreTemporaryPermissionValues">void restoreTemporaryPermissionValues(boolean restoresFromBase, boolean calledByEngine, boolean calledByEngine)</a></dt>
+		<dd>
+			Restores current temporary permission settings.
 		</dd>
 
 	<dt><a href="#getEngineConnectorClass">Class&lt;?&gt; getEngineConnectorClass()</a></dt>
@@ -206,7 +177,7 @@ This interface is published under CC0, which is almost the same as the so-called
 	</tr>
 	<tr>
 		<td class="lcol">Value</td>
-		<td class="rcol">The generation of this interface (value: "1").</td>
+		<td class="rcol">The generation of this interface (value: "2").</td>
 	</tr>
 	<tr>
 		<td class="lcol">Type</td>
@@ -353,6 +324,230 @@ This interface is published under CC0, which is almost the same as the so-called
 	<tr>
 		<td class="lcol">Exception</td>
 		<td class="rcol">ConnectorException: Thrown when the requested permission has been denied.</td>
+	</tr>
+</table>
+
+
+
+<table id="setPermissionValue" class="spec-table">
+	<tr>
+		<th class="lcol">Name</th>
+		<th class="rcol">setPermissionValue</th>
+	</tr>
+	<tr>
+		<td class="lcol">Signature</td>
+		<td class="rcol">void setPermissionValue(String permissionName, String value, boolean setsToBase, boolean calledByEngine) throws ConnectorException</td>
+	</tr>
+	<tr>
+		<td class="lcol">Description</td>
+		<td class="rcol">
+			<p style="margin-top: 0px;">
+			Sets the value of the specified permission item.
+			</p>
+			<p>
+			This method will be called from script engines/applications, 
+			and may be called from other plug-ins through engine-connector interfaces.
+			In the latter case, the permission for modifying/referencing permissions is required.
+			</p>
+			<p>
+			<p>
+			However, features which enable to modify/refer permission settings from other plug-ins are unsupported yet by 
+			engine-connector interfaces (e.g.: <a href="EngineConnectorInterface1_SPEC_ENGLISH.html">ECI1</a>). 
+			Furthermore, it is unckear whether it will be supported in future. 
+			This method is a kind of "mockup" of the above feature, at the present stage.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Parameters</td>
+		<td class="rcol">
+			permissionName: The name of the permission item to be set its value.
+			<br />
+			value: The value to be set.
+			<br />
+			setsToBase: Specify true to set the value of base permission settings, or false to set the value of temporary permission settings.
+			<br />
+			calledByEngine: Specify "true" when calling this method by the scripting engine.
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Return</td>
+		<td class="rcol">None</td>
+	</tr>
+	<tr>
+		<td class="lcol">Exception</td>
+		<td class="rcol">
+			ConnectorException:
+			Thrown when the requested action has been denied, or unsupported, especially when "false" is specified to "calledByEngine".
+			Also, thrown when "false" is specified to "setsToBase" but the temporary permission settings does not exist
+			(not created yet or already disposed).
+		</td>
+	</tr>
+</table>
+
+
+
+<table id="getPermissionValue" class="spec-table">
+	<tr>
+		<th class="lcol">Name</th>
+		<th class="rcol">getPermissionValue</th>
+	</tr>
+	<tr>
+		<td class="lcol">Signature</td>
+		<td class="rcol">String getPermissionValue(String permissionName, boolean getFromBase, boolean calledByEngine) throws ConnectorException</td>
+	</tr>
+	<tr>
+		<td class="lcol">Description</td>
+		<td class="rcol">
+			<p style="margin-top: 0px;">
+			Gets the value of the specified permission item.
+			</p>
+			<p>
+			This method will be called from script engines/applications, 
+			and may be called from other plug-ins through engine-connector interfaces.
+			In the latter case, the permission for modifying/referencing permissions is required.
+			</p>
+			<p>
+			However, features which enable to modify/refer permission settings from other plug-ins are unsupported yet by 
+			engine-connector interfaces (e.g.: <a href="EngineConnectorInterface1_SPEC_ENGLISH.html">ECI1</a>). 
+			Furthermore, it is unckear whether it will be supported in future. 
+			This method is a kind of "mockup" of the above feature, at the present stage.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Parameters</td>
+		<td class="rcol">
+			permissionName: The name of the permission item to be gotten its value.
+			<br />
+			getFromBase: Specify true to get the value of base permission settings, or false to get the value of temporary permission settings.
+			<br />
+			calledByEngine: Specify true when calling this method by the scripting engine.
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Return</td>
+		<td class="rcol">he value of the specified permission item.</td>
+	</tr>
+	<tr>
+		<td class="lcol">Exception</td>
+		<td class="rcol">
+			Thrown when the requested action has been denied, or unsupported, especially when "false" is specified to "calledByEngine".
+			Also, thrown when "false" is specified to "getFromBase" but the temporary permission settings does not exist
+			(not created yet or already disposed).
+		</td>
+	</tr>
+</table>
+
+
+<table id="storeTemporaryPermissionValues" class="spec-table">
+	<tr>
+		<th class="lcol">Name</th>
+		<th class="rcol">storeTemporaryPermissionValues</th>
+	</tr>
+	<tr>
+		<td class="lcol">Signature</td>
+		<td class="rcol">void storeTemporaryPermissionValues(boolean storesToBase, boolean calledByEngine) throws ConnectorException</td>
+	</tr>
+	<tr>
+		<td class="lcol">Description</td>
+		<td class="rcol">
+			<p style="margin-top: 0px;">
+			Stores current temporary permission settings.
+			</p>
+			<p>
+			Stores current temporary permission settings
+			for restoring it later by 
+			<a href="#restoreTemporaryPermissionValues">restoreTemporaryPermissionValues(boolean restoresFromBase, boolean calledByEngine) method,
+			or overwriting permanent permission settings.
+			</p>
+			<p>
+			This method will be called from script engines/applications, 
+			and may be called from other plug-ins through engine-connector interfaces.
+			In the latter case, the permission for modifying/referencing permissions is required.
+			</p>
+			<p>
+			However, features which enable to modify/refer permission settings from other plug-ins are unsupported yet by 
+			engine-connector interfaces (e.g.: <a href="EngineConnectorInterface1_SPEC_ENGLISH.html">ECI1</a>). 
+			Furthermore, it is unckear whether it will be supported in future. 
+			This method is a kind of "mockup" of the above feature, at the present stage.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Parameters</td>
+		<td class="rcol">
+			storesToBase: Specify true to store by overwriting base permission settings, 
+			or false to store temporary for recovering later by 
+			<a href="#restoreTemporaryPermissionValues">restoreTemporaryPermissionValues(boolean restoresFromBase)</a> method.
+			<br />
+			calledByEngine: Specify true when calling this method by the scripting engine.
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Return</td>
+		<td class="rcol">None</td>
+	</tr>
+	<tr>
+		<td class="lcol">Exception</td>
+		<td class="rcol">
+			Thrown when the requested action has been denied, or unsupported, especially when "false" is specified to "calledByEngine".
+			Also, thrown when "false" is specified to "getFromBase" but the temporary permission settings does not exist
+			(not created yet or already disposed).
+		</td>
+	</tr>
+</table>
+
+
+<table id="restoreTemporaryPermissionValues" class="spec-table">
+	<tr>
+		<th class="lcol">Name</th>
+		<th class="rcol">restoreTemporaryPermissionValues</th>
+	</tr>
+	<tr>
+		<td class="lcol">Signature</td>
+		<td class="rcol">void restoreTemporaryPermissionValues(boolean restoresFromBase, boolean calledByEngine, boolean calledByEngine) throws ConnectorException</td>
+	</tr>
+	<tr>
+		<td class="lcol">Description</td>
+		<td class="rcol">
+			<p style="margin-top: 0px;">
+			Restores current temporary permission settings.
+			</p>
+			<p>
+			This method will be called from script engines/applications, 
+			and may be called from other plug-ins through engine-connector interfaces.
+			In the latter case, the permission for modifying/referencing permissions is required (but unsupported yet).
+			</p>
+			<p>
+			However, features which enable to modify/refer permission settings from other plug-ins are unsupported yet by 
+			engine-connector interfaces (e.g.: <a href="EngineConnectorInterface1_SPEC_ENGLISH.html">ECI1</a>). 
+			Furthermore, it is unckear whether it will be supported in future. 
+			This method is a kind of "mockup" of the above feature, at the present stage.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Parameters</td>
+		<td class="rcol">
+			restoresFromBase: Specify true to restore by copying values from base permission settings,
+			or false to restore by loading settings stored temporary by 
+			<a href="#restoreTemporaryPermissionValues">restoreTemporaryPermissionValues(boolean restoresFromBase)</a> method.
+			<br />
+			calledByEngine: Specify true when calling this method by the scripting engine.
+		</td>
+	</tr>
+	<tr>
+		<td class="lcol">Return</td>
+		<td class="rcol">None</td>
+	</tr>
+	<tr>
+		<td class="lcol">Exception</td>
+		<td class="rcol">
+			Thrown when the requested action has been denied, or unsupported, especially when "false" is specified to "calledByEngine".
+			Also, thrown when "false" is specified to "getFromBase" but the temporary permission settings does not exist
+			(not created yet or already disposed).
+		</td>
 	</tr>
 </table>
 
