@@ -22,9 +22,9 @@ In the "plugin" folder, create a new plug-in class, and in it "implement" the in
 
     (in plugin/MyFunctionPlugin.java)
 
-    import org.vcssl.connect.ExternalFunctionConnectorInterface;
+    import org.vcssl.connect.ExternalFunctionConnectorInterface1;
 
-    public class MyFunctionPlugin implements ExternalFunctionConnectorInterface {
+    public class MyFunctionPlugin implements ExternalFunctionConnectorInterface1 {
         ...
     }
 
