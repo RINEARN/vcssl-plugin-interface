@@ -27,7 +27,7 @@ public class ConnectorFatalException extends RuntimeException {
 	/**
 	 * Creates a ConnectorFatalException having no error message.
 	 */
-	public ConnectorException() {
+	public ConnectorFatalException() {
 		super();
 	}
 
